@@ -1,0 +1,35 @@
+{
+  "name": "nf-spn-addon",
+  "version": "1.0.0",
+  "description": "Ninja Forms Smart Phone Number Addon by JDI.company",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDI-company/NF-Smart-Phone-Addon.git"
+  },
+  "keywords": [
+    "ninja-forms",
+    "inttelinput",
+    "inttelinput",
+    "ninja-forms",
+    "addon"
+  ],
+  "author": "JDI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JDI-company/NF-Smart-Phone-Addon/issues"
+  },
+  "homepage": "https://github.com/JDI-company/NF-Smart-Phone-Addon#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.0",
+    "compression-webpack-plugin": "^10.0.0",
+    "gulp": "^4.0.2",
+    "webpack": "^5.75.0",
+    "webpack-stream": "^7.0.0"
+  }
+}
