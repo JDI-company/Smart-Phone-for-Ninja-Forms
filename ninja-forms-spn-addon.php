@@ -13,9 +13,9 @@
  * @package           Ninja_Forms_Spn_Addon
  *
  * @wordpress-plugin
- * Plugin Name:       Ninja Forms SPN Addon
+ * Plugin Name:       Smart Phone Addon for Ninja Forms
  * Plugin URI:        https://ninjaforms.com/?utm_source=Ninja+Forms+Plugin&utm_medium=readme
- * Description:       Ninja Forms Smart Phone Number Addon is a plugin to add country flag to the Phone Number field.
+ * Description:       Smart Phone Addon for Ninja Forms is a plugin to add country flag to the Phone Number field.
  * Version:           1.0.0
  * Author:            JDI
  * Author URI:        https://jdi.company
