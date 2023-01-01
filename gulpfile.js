@@ -6,7 +6,6 @@
 const gulp = require('gulp')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
-const CompressionPlugin = require('compression-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
 // Implement functions
@@ -15,7 +14,7 @@ function compileAdminJS () {
     .src('./admin/js/ninja-forms-spn-addon-admin.js')
     .pipe(
       webpackStream({
-        mode: 'development',
+        mode: 'production',
         output: {
           filename: '[name].min.js'
         },
@@ -44,9 +43,6 @@ function compileAdminJS () {
             }
           }
         },
-        plugins: [
-          new CompressionPlugin()
-        ]
       }),
       webpack
     )
@@ -58,7 +54,7 @@ function compilePublicJS () {
     .src('./public/js/ninja-forms-spn-addon-public.js')
     .pipe(
       webpackStream({
-        mode: 'development',
+        mode: 'production',
         output: {
           filename: '[name].min.js'
         },
@@ -87,9 +83,6 @@ function compilePublicJS () {
             }
           }
         },
-        plugins: [
-          new CompressionPlugin()
-        ]
       }),
       webpack
     )

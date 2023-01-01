@@ -1,21 +1,22 @@
 === Smart Phone Addon for Ninja Forms ===
-Contributors: @yaroslavborodii, @max10110
+Contributors: yaroslavborodii, max10110
 Donate link: https://jdi.company
-Tags: ninja form, ninja form Smart Phone Addon, SPN, ninja form intlTelInput, intlTelInput, ninja form addon
+Tags: Smart Phone Addon, Ninja Forms, SPN, intlTelInput, International Telephone Input
 Requires at least: 4.0
 Tested up to: 6.1.1
-Stable tag: 1.0.0
-License: GPLv2 or later
+Stable tag: 1.0.2
+License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Requires PHP: 7.0
 
-This plugin is an addon to the Ninja Forms plugin. It uses third part integration called intlTelInput. It's free absolutely.
+This plugin is an addon to the Ninja Forms plugin. It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
 
 == Description ==
 
 It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
 
-The Smart Phone is an addon to the Ninja Forms plugin.
-We use third part integration called <a href="https://github.com/jackocnr/intl-tel-input">intlTelInput</a>.
+The Smart Phone is an addon to the Ninja Forms plugin. We use third part integration called <a href="https://github.com/jackocnr/intl-tel-input">intlTelInput</a>.
+
 It's free absolutely.
 
 == Installation ==
@@ -31,7 +32,7 @@ This section describes how to install the plugin and get it working.
 = Is it paid? =
 
 No, it's free absolutely.
-If you want to support us, see donate section <3.
+If you want to support us, see donate section.
 
 = It doesn't work or my site was broken =
 
@@ -47,9 +48,22 @@ please, write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borod
 
 == Changelog ==
 
+= 1.0.2 =
+* Removed JavaScript plugin `compression-webpack-plugin`. It compressed versions of assets to serve them with Content-Encoding (gz).
+* Removed `.gz` files by WordPress requirement.
+* Changed `webpack` mode from `development` to `production`.
+* Improved `README.txt`.
+* Fixed `package.json` (license, urls, version)
+* Changed plugin URI to github repository.
+
+= 1.0.1 =
+* Changed plugin name by Wordpress requirement
+
 = 1.0 =
 * Init Ninja Forms Smart Phone Addon
 
 == Upgrade Notice ==
 
-== Arbitrary section ==
+= 1.0.2
+
+= 1.0.1
