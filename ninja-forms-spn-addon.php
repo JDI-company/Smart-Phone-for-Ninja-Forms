@@ -16,7 +16,7 @@
  * Plugin Name:       Smart Phone Addon for Ninja Forms
  * Plugin URI:        https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms
  * Description:       Smart Phone Addon for Ninja Forms is a plugin to add country flag to the Phone Number field.
- * Version:           1.0.0
+ * Version:           1.0.3
  * Author:            JDI
  * Author URI:        https://jdi.company
  * License:           GPL-2.0+
@@ -50,7 +50,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'NINJA_FORMS_SPN_ADDON_VERSION', '1.0.0' );
+define( 'NINJA_FORMS_SPN_ADDON_VERSION', '1.0.3' );
 
 /**
  * The code that runs during plugin activation.

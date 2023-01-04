@@ -4,7 +4,7 @@ Donate link: https://jdi.company
 Tags: Smart Phone Addon, Ninja Forms, SPN, intlTelInput, International Telephone Input
 Requires at least: 4.0
 Tested up to: 6.1.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -48,6 +48,10 @@ please, write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borod
 
 == Changelog ==
 
+= 1.0.3 =
+* Fixed Incorrect Stable Tag
+* Removed unnecessary options in package.json
+
 = 1.0.2 =
 * Removed JavaScript plugin `compression-webpack-plugin`. It compressed versions of assets to serve them with Content-Encoding (gz).
 * Removed `.gz` files by WordPress requirement.
@@ -64,6 +68,8 @@ please, write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borod
 
 == Upgrade Notice ==
 
-= 1.0.2
+= 1.0.3 =
 
-= 1.0.1
+= 1.0.2 =
+
+= 1.0.1 =
