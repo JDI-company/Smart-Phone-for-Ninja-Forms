@@ -29,8 +29,9 @@ function formSettings () {
   'use strict'
 
   $(window).on('load', function () {
-    $('.nf-field-container.spn-container input').each(function () {
+    $('.nf-field-container.spn-container input[type="tel"]').each(function () {
       const $input = $(this)
+
 
       let onlyCountries = $input.data('only-countries').split(',')
       if (onlyCountries.includes('all')) {
@@ -67,7 +68,7 @@ function formSettings () {
       const separateDialCode = Boolean($input.data('separate-dial-code'))
       const formatOnDisplay = Boolean($input.data('format-on-display'))
 
-      $input.intlTelInput({
+      $input.attr('type', 'tel').intlTelInput({
         initialCountry: defaultCountry,
         preferredCountries,
         onlyCountries,
@@ -80,6 +81,30 @@ function formSettings () {
         formatOnDisplay,
         utilsScript: '../../vendor/intl-tel-input-master/build/js/utils.js'
       })
+    })
+  })
+  $(window).on('load', function initCustomFormValidation () {
+    const PasswordValidationModule = Marionette.Object.extend({
+
+      initialize: function () {
+        this.listenTo(Backbone.Radio.channel('fields'), 'change:modelValue', this.validate)
+      },
+
+      validate: function (model) {
+        if (model.attributes.custom_name_attribute === 'phone') {
+          const dataId = model.get('id');
+          const phone = $('#nf-field-' + dataId)
+          const middle = phone.parent()
+          const titleToCode = middle.find('.iti__selected-flag').attr("title")
+          const mainCodeCountry = titleToCode.match(/[+\d]+/g).join("")
+          const phoneHidden = middle.parent().find('#nf-field-' + dataId + '-hidden');
+          phoneHidden.val(mainCodeCountry + phone.val())
+        }
+      }
+    })
+
+    $(function () {
+      return new PasswordValidationModule()
     })
   })
 }
