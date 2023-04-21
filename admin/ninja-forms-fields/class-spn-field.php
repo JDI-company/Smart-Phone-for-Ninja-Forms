@@ -26,7 +26,6 @@ class SPN_Field extends NF_Fields_Phone {
 
 		$this->add_options();
 
-		$this->_settings['custom_name_attribute']['value']   = 'phone';
 		$this->_settings['personally_identifiable']['value'] = '1';
 	}
 
@@ -147,7 +146,7 @@ class SPN_Field extends NF_Fields_Phone {
 		/**
 		 * Add allowDropdown
 		 *
-		 * @since    2.0.0
+		 * @since    1.0.0
 		 */
 		$this->_settings['allow_dropdown'] = array(
 			'name'    => 'allow_dropdown',
@@ -163,7 +162,7 @@ class SPN_Field extends NF_Fields_Phone {
 		/**
 		 * Add nationalMode
 		 *
-		 * @since    2.0.0
+		 * @since    1.0.0
 		 */
 		$this->_settings['national_mode'] = array(
 			'name'    => 'national_mode',
@@ -179,7 +178,7 @@ class SPN_Field extends NF_Fields_Phone {
 		/**
 		 * Add autoHideDialCode
 		 *
-		 * @since    2.0.0
+		 * @since    1.0.0
 		 */
 		$this->_settings['auto_hide_dial_code'] = array(
 			'name'  => 'auto_hide_dial_code',
@@ -194,7 +193,7 @@ class SPN_Field extends NF_Fields_Phone {
 		/**
 		 * Add excludeCountries
 		 *
-		 * @since    2.0.0
+		 * @since    1.0.0
 		 */
 		$this->_settings['exclude_countries'] = array(
 			'name'    => 'exclude_countries',
@@ -210,7 +209,7 @@ class SPN_Field extends NF_Fields_Phone {
 		/**
 		 * Add Format On Display
 		 *
-		 * @since    2.0.0
+		 * @since    1.0.0
 		 */
 		$this->_settings['format_on_display'] = array(
 			'name'  => 'format_on_display',

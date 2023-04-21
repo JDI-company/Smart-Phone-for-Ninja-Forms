@@ -32,7 +32,6 @@ function formSettings () {
     $('.nf-field-container.spn-container input[type="tel"]').each(function () {
       const $input = $(this)
 
-
       let onlyCountries = $input.data('only-countries').split(',')
       if (onlyCountries.includes('all')) {
         onlyCountries = codesISO2
@@ -68,7 +67,7 @@ function formSettings () {
       const separateDialCode = Boolean($input.data('separate-dial-code'))
       const formatOnDisplay = Boolean($input.data('format-on-display'))
 
-      $input.attr('type', 'tel').intlTelInput({
+      $input.intlTelInput({
         initialCountry: defaultCountry,
         preferredCountries,
         onlyCountries,
@@ -83,28 +82,31 @@ function formSettings () {
       })
     })
   })
-  $(window).on('load', function initCustomFormValidation () {
-    const PasswordValidationModule = Marionette.Object.extend({
+
+  $(window).on('load', function () {
+    const syncPhoneNumber = Marionette.Object.extend({
 
       initialize: function () {
-        this.listenTo(Backbone.Radio.channel('fields'), 'change:modelValue', this.validate)
+        this.listenTo(Backbone.Radio.channel('fields'), 'change:modelValue', this.syncPhoneNumber)
       },
 
-      validate: function (model) {
+      syncPhoneNumber: function (model) {
         if (model.attributes.custom_name_attribute === 'phone') {
-          const dataId = model.get('id');
-          const phone = $('#nf-field-' + dataId)
-          const middle = phone.parent()
-          const titleToCode = middle.find('.iti__selected-flag').attr("title")
-          const mainCodeCountry = titleToCode.match(/[+\d]+/g).join("")
-          const phoneHidden = middle.parent().find('#nf-field-' + dataId + '-hidden');
-          phoneHidden.val(mainCodeCountry + phone.val())
+          const modelID = model.get('id')
+
+          const $phone = $('#nf-field-' + modelID)
+          const $wrapper = $phone.parents('nf-field')
+          const $phoneHidden = $wrapper.find('#nf-field-' + modelID + '-hidden')
+
+          const countryCode = $wrapper.find('.iti__selected-flag').attr('title').match(/[+\d]+/g).join('')
+
+          $phoneHidden.val(countryCode + $phone.val())
         }
       }
     })
 
     $(function () {
-      return new PasswordValidationModule()
+      return new syncPhoneNumber()
     })
   })
 }

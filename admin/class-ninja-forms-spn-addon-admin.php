@@ -117,16 +117,4 @@ class Ninja_Forms_Spn_Addon_Admin {
 
 	}
 
-	/**
-	 * Add templates file path.
-	 *
-	 * @since    1.0.0
-	 */
-	public function register_template_path( $paths ) {
-
-		$paths[] = plugin_dir_path( __FILE__ ) . 'ninja-forms-fields/templates/';
-
-		return $paths;
-
-	}
 }
