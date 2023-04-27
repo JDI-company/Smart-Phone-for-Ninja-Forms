@@ -25,63 +25,105 @@ const codesISO2European = ['al', 'ad', 'at', 'by', 'be', 'ba', 'bg', 'hr', 'cz',
   'li', 'lt', 'lu', 'mk', 'mt', 'md', 'mc', 'me', 'nl', 'no', 'pl', 'pt', 'ro',
   'ru', 'sm', 'rs', 'sk', 'si', 'es', 'se', 'ch', 'ua', 'gb']
 
-function formSettings () {
+function initSPN () {
   'use strict'
 
-  $(window).on('load', function () {
-    $('.nf-field-container.spn-container input').each(function () {
-      const $input = $(this)
+  const initInputOnFormLoad = Marionette.Object.extend({
+    initialize: function () {
+      this.listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
+    },
 
-      let onlyCountries = $input.data('only-countries').split(',')
-      if (onlyCountries.includes('all')) {
-        onlyCountries = codesISO2
-      } else if (onlyCountries.includes('european')) {
-        onlyCountries = onlyCountries.remove('european')
-        onlyCountries = onlyCountries.concat(codesISO2European)
-      }
+    initInputOnFormLoad: function (model) {
+      let $parentElement = $(model.el);
+      let $inputPath = $parentElement.find('.spn-container input[type="tel"]');
 
-      const preferredCountries = $input.data('preffered-countries').split(',')
-      let defaultCountry = $input.data('default-country')
-      const allowDropdown = Boolean($input.data('allow-dropdown'))
-      const nationalMode = Boolean($input.data('national-mode'))
-      const autoHideDialCode = Boolean($input.data('auto-hide-dial-code'))
+      $($inputPath).each(function () {
+        const $input = $(this)
 
-      let excludeCountries = $input.data('exclude-countries')
-      if (excludeCountries) {
-        excludeCountries = excludeCountries.split(',')
-      }
-
-      let allowIpLookUp = Boolean($input.data('allow-ip-lookup'))
-      if (allowIpLookUp) {
-        allowIpLookUp = function (success, failure) {
-          $.get('https://ipinfo.io', function () {}, 'jsonp').always(function (resp) {
-            const countryCode = (resp && resp.country) ? resp.country : defaultCountry
-            success(countryCode)
-          })
+        let onlyCountries = $input.data('only-countries').split(',')
+        if (onlyCountries.includes('all')) {
+          onlyCountries = codesISO2
+        } else if (onlyCountries.includes('european')) {
+          onlyCountries = onlyCountries.remove('european')
+          onlyCountries = onlyCountries.concat(codesISO2European)
         }
-        defaultCountry = 'auto'
-      } else {
-        allowIpLookUp = null
-      }
 
-      const separateDialCode = Boolean($input.data('separate-dial-code'))
-      const formatOnDisplay = Boolean($input.data('format-on-display'))
+        const preferredCountries = $input.data('preffered-countries').split(',')
+        let defaultCountry = $input.data('default-country')
+        const allowDropdown = Boolean($input.data('allow-dropdown'))
+        const nationalMode = Boolean($input.data('national-mode'))
+        const autoHideDialCode = Boolean($input.data('auto-hide-dial-code'))
 
-      $input.intlTelInput({
-        initialCountry: defaultCountry,
-        preferredCountries,
-        onlyCountries,
-        allowDropdown,
-        nationalMode,
-        autoHideDialCode,
-        excludeCountries,
-        geoIpLookup: allowIpLookUp,
-        separateDialCode,
-        formatOnDisplay,
-        utilsScript: '../../vendor/intl-tel-input-master/build/js/utils.js'
+        let excludeCountries = $input.data('exclude-countries')
+        if (excludeCountries) {
+          excludeCountries = excludeCountries.split(',')
+        }
+
+        let allowIpLookUp = Boolean($input.data('allow-ip-lookup'))
+        if (allowIpLookUp) {
+          allowIpLookUp = function (success, failure) {
+            $.get('https://ipinfo.io', function () {}, 'jsonp').always(function (resp) {
+              const countryCode = (resp && resp.country) ? resp.country : defaultCountry
+              success(countryCode)
+            })
+          }
+          defaultCountry = 'auto'
+        } else {
+          allowIpLookUp = null
+        }
+
+        const separateDialCode = Boolean($input.data('separate-dial-code'))
+        const formatOnDisplay = Boolean($input.data('format-on-display'))
+
+        $input.intlTelInput({
+          initialCountry: defaultCountry,
+          preferredCountries,
+          onlyCountries,
+          allowDropdown,
+          nationalMode,
+          autoHideDialCode,
+          excludeCountries,
+          geoIpLookup: allowIpLookUp,
+          separateDialCode,
+          formatOnDisplay,
+          utilsScript: '../../vendor/intl-tel-input-master/build/js/utils.js'
+        })
       })
-    })
+    }
   })
+
+  new initInputOnFormLoad()
+
+  let $phoneHidden;
+
+  const syncPhoneNumber = Marionette.Object.extend({
+    initialize: function () {
+      this.listenTo(Backbone.Radio.channel('fields'), 'change:modelValue', this.syncPhoneNumber)
+      this.listenTo(Backbone.Radio.channel('fields'), 'before:submit', this.submitForm)
+    },
+    
+    syncPhoneNumber: function (model) {
+      if (model.get('type') === 'spn' && model.get('value') !== '' && !isNaN(Number(model.get('value')))) {
+        const modelID = model.get('id')
+
+        const $phone = $('#nf-field-' + modelID)
+        const $wrapper = $phone.parents('nf-field')
+        $phoneHidden = $wrapper.find('#nf-field-' + modelID + '-hidden')
+
+        const countryCode = $wrapper.find('.iti__selected-flag').attr('title').match(/[+\d]+/g).join('')
+
+        $phoneHidden.val(countryCode + $phone.val())
+      }
+    },
+
+    submitForm: function (model) {
+      if(model.get('type') === 'spn') {
+        model.set('value', $phoneHidden.val())
+      }
+    }
+  })
+
+  new syncPhoneNumber()
 }
 
-formSettings()
+initSPN()

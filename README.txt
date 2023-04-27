@@ -3,8 +3,8 @@ Contributors: yaroslavborodii, max10110
 Donate link: https://jdi.company
 Tags: Smart Phone Addon, Ninja Forms, SPN, intlTelInput, International Telephone Input
 Requires at least: 4.0
-Tested up to: 6.1.1
-Stable tag: 1.0.3
+Tested up to: 6.2
+Stable tag: 1.1.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -48,6 +48,11 @@ please, write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borod
 
 == Changelog ==
 
+= 1.1.0 =
+* Fixed bug <a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues/1" target="_blank">Responsive issue in Elementor (#1)</a>.
+* Closed <a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues/2" target="_blank">Elementor Builder plugin crash (#2)</a>. Cannot reproduce bug.
+* Fixed bug <a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues/3" target="_blank">Prefix not stored (#3)</a>.
+
 = 1.0.3 =
 * Fixed Incorrect Stable Tag
 * Removed unnecessary options in package.json
@@ -67,6 +72,9 @@ please, write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borod
 * Init Ninja Forms Smart Phone Addon
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+NOTE:<br>if you have used custom code to add a country code to your submissions in WordPress, you can remove it.
 
 = 1.0.3 =
 

@@ -1,9 +1,20 @@
 <script id="tmpl-nf-field-spn" type="text/template">
-	<input
+    <input
+        type="hidden"
+        value="{{{ _.escape( data.value ) }}}"
+        id="nf-field-{{{ data.id }}}-hidden"
+
+        <# if( ! data.disable_browser_autocompletes ){ #>
+            name="{{ data.custom_name_attribute + '-hidden' || 'nf-field-' + data.id + '-' + data.type + '-hidden'}}"
+        <# } else { #>
+            name="{{ data.custom_name_attribute + '-hidden' || 'nf-field-' + data.id + '-hidden'}}"
+        <# } #>
+    >
+
+    <input
         type="tel"
         value="{{{ _.escape( data.value ) }}}"
-        class="{{{ data.renderClasses() }}} nf-element"
-
+        class="ninja-forms-field nf-element"
         id="nf-field-{{{ data.id }}}"
 
         <# if( ! data.disable_browser_autocompletes ){ #>
@@ -12,15 +23,13 @@
         <# } else { #>
             name="{{ data.custom_name_attribute || 'nf-field-' + data.id }}"
             {{{ data.maybeDisableAutocomplete() }}}
-        <# } #> 
-
-        {{{ data.renderPlaceholder() }}}
+        <# } #>
 
         aria-invalid="false"
         aria-describedby="nf-error-{{{ data.id }}}"
         aria-labelledby="nf-label-field-{{{ data.id }}}"
 
-        placeholder=""
+        {{{ data.renderPlaceholder() }}}
 
         {{{ data.maybeRequired() }}}
 
@@ -38,9 +47,11 @@
         data-allow-dropdown="{{{ data.allow_dropdown }}}"
         data-national-mode="{{{ data.national_mode }}}"
         data-auto-hide-dial-code="{{{ data.auto_hide_dial_code }}}"
+
         <# if( data.exclude_countries ){ #>
             data-exclude-countries="{{{ data.exclude_countries }}}"
         <# } #>
+
         data-format-on-display="{{{ data.format_on_display }}}"
-	>
+    >
 </script>

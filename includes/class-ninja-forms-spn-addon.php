@@ -169,6 +169,7 @@ class Ninja_Forms_Spn_Addon {
 	private function define_admin_hooks() {
 
 		$plugin_admin             = new Ninja_Forms_Spn_Addon_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public            = new Ninja_Forms_Spn_Addon_Public( $this->get_plugin_name(), $this->get_version() );
 		$plugin_builder_templates = new SPN_Builder_Templates();
 
 		// Styles and scripts
@@ -181,7 +182,7 @@ class Ninja_Forms_Spn_Addon {
 		// Ninja Forms Filters
 		$this->loader->add_filter( 'ninja_forms_plugin_settings', $plugin_admin, 'add_select_multiple' );
 		$this->loader->add_filter( 'ninja_forms_register_fields', $plugin_admin, 'register_fields' );
-		$this->loader->add_filter( 'ninja_forms_field_template_file_paths', $plugin_admin, 'register_template_path' );
+		$this->loader->add_filter( 'ninja_forms_field_template_file_paths', $plugin_public, 'register_template_path' );
 
 	}
 
