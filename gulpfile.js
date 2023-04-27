@@ -16,7 +16,7 @@ function compileAdminJS () {
       webpackStream({
         mode: 'production',
         output: {
-          filename: '[name].min.js'
+          filename: 'spn-back-end.min.js'
         },
         module: {
           rules: [
@@ -56,7 +56,7 @@ function compilePublicJS () {
       webpackStream({
         mode: 'production',
         output: {
-          filename: '[name].min.js'
+          filename: 'spn-front-end.min.js'
         },
         module: {
           rules: [

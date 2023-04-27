@@ -99,7 +99,7 @@ class Ninja_Forms_Spn_Addon_Public {
 
 		wp_enqueue_script( 'intlTelInput', plugin_dir_url( dirname( __FILE__ ) ) . 'vendor/intl-tel-input-master/build/js/intlTelInput-jquery.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( 'intlTelInputUtils', plugin_dir_url( dirname( __FILE__ ) ) . 'vendor/intl-tel-input-master/build/js/utils.js', array( 'intlTelInput' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( dirname( __FILE__ ) ) . 'dist/public/main.min.js', array( 'jquery', 'intlTelInput' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( dirname( __FILE__ ) ) . 'dist/public/spn-front-end.min.js', array( 'jquery', 'intlTelInput', 'nf-front-end' ), $this->version, false );
 
 	}
 
