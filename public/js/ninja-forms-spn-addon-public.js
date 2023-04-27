@@ -31,7 +31,7 @@ function formSettings () {
   $(window).on('load', function () {
     $('.nf-field-container.spn-container input[type="tel"]').each(function () {
       const $input = $(this)
-
+      
       let onlyCountries = $input.data('only-countries').split(',')
       if (onlyCountries.includes('all')) {
         onlyCountries = codesISO2
@@ -84,24 +84,30 @@ function formSettings () {
   })
 
   $(window).on('load', function () {
+    let $phoneHidden;
     const syncPhoneNumber = Marionette.Object.extend({
 
       initialize: function () {
         this.listenTo(Backbone.Radio.channel('fields'), 'change:modelValue', this.syncPhoneNumber)
+        this.listenTo(Backbone.Radio.channel('fields'), 'before:submit', this.submitForm)
       },
-
+      
       syncPhoneNumber: function (model) {
-        if (model.attributes.custom_name_attribute === 'phone') {
+        if (model.attributes.value !== '' && !isNaN(Number(model.attributes.value))) {
           const modelID = model.get('id')
 
           const $phone = $('#nf-field-' + modelID)
           const $wrapper = $phone.parents('nf-field')
-          const $phoneHidden = $wrapper.find('#nf-field-' + modelID + '-hidden')
+          $phoneHidden = $wrapper.find('#nf-field-' + modelID + '-hidden')
 
           const countryCode = $wrapper.find('.iti__selected-flag').attr('title').match(/[+\d]+/g).join('')
 
           $phoneHidden.val(countryCode + $phone.val())
         }
+      },
+
+      submitForm: function (model) {
+        model.attributes.value = $phoneHidden.val()
       }
     })
 
