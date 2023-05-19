@@ -25,7 +25,7 @@ const codesISO2European = ['al', 'ad', 'at', 'by', 'be', 'ba', 'bg', 'hr', 'cz',
   'li', 'lt', 'lu', 'mk', 'mt', 'md', 'mc', 'me', 'nl', 'no', 'pl', 'pt', 'ro',
   'ru', 'sm', 'rs', 'sk', 'si', 'es', 'se', 'ch', 'ua', 'gb']
 
-function test($parentElement) {
+function submitFormInitialize($parentElement) {
   let $inputPath = $parentElement.find('.spn-container input[type="tel"]');
 
   $($inputPath).each(function () {
@@ -80,38 +80,30 @@ function test($parentElement) {
       utilsScript: '../../vendor/intl-tel-input-master/build/js/utils.js'
     })
   })
-}
+}  
 
 function initSPN () {
   'use strict'
 
   const initInputOnFormLoad = Marionette.Object.extend({
     initialize: function () {
-      this.listenTo(Backbone.Radio.channel('form'), 'render:view', this._initInputOnFormLoad)
+      this.listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad);
     },
 
-    _initInputOnFormLoad: function (model) {
+    initInputOnFormLoad: function (model) {
       let $parentElement = $(model.el)
-      test($parentElement)
+      submitFormInitialize($parentElement)
+      let targetNode = $parentElement.parent()[0];
 
-      // Select the target node
-      var targetNode = $parentElement.parent()[0];
-
-      // Create an observer instance
-      var observer = new MutationObserver(function(mutationsList) {
-        // Iterate over the list of mutations
-        for (var mutation of mutationsList) {
+      let observer = new MutationObserver(function(mutationsList) {
+        for (let mutation of mutationsList) {
           if (mutation.type === 'childList') {
-            // The content of the target node has changed
-            test($parentElement)
+            submitFormInitialize($parentElement)
           }
         }
       });
 
-      // Configuration of the observer:
-      var config = { attributes: true, childList: true, subtree: true };
-
-      // Start observing the target node
+      let config = { attributes: true, childList: true, subtree: true };
       observer.observe(targetNode, config);
     }
   })
