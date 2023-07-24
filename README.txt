@@ -3,8 +3,8 @@ Contributors: yaroslavborodii, max10110
 Donate link: https://jdi.company
 Tags: Smart Phone Addon, Ninja Forms, SPN, intlTelInput, International Telephone Input
 Requires at least: 4.0
-Tested up to: 6.2
-Stable tag: 1.1.0
+Tested up to: 6.3.0
+Stable tag: 1.2.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -18,6 +18,11 @@ It adds a flag dropdown to any input, detects the user's country, displays a rel
 The Smart Phone is an addon to the Ninja Forms plugin. We use third part integration called <a href="https://github.com/jackocnr/intl-tel-input">intlTelInput</a>.
 
 It's free absolutely.
+
+== GitHub ==
+If you have any problems or you want to downgrade the version, we recommend use GitHub.
+Just change branch and download what you need.
+<a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms" target="_blank">Smart Phone for Ninja Forms on GitHub</a>
 
 == Installation ==
 
@@ -37,7 +42,8 @@ If you want to support us, see donate section.
 = It doesn't work or my site was broken =
 
 If your site was broken after activation our plugin,
-please, write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jdi.company</a>
+please, create issue here: https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues
+or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jdi.company</a>
 
 == Screenshots ==
 
@@ -47,6 +53,20 @@ please, write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borod
 4. Screenshot 4. Some options that exist in the 'Restrictions' section of the field.
 
 == Changelog ==
+
+= 1.2.0 =
+#### User Notes
+- Fix and close issue [Phone Number disappears on "clear successfully completed form" event (#6)](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues/6)
+
+#### Dev Notes
+- Add [JavaScript Standard](https://standardjs.com/)
+- Code Refactoring
+- Add package-lock.json to .gitignore
+- Update jQuery dependency for Frontend (for now it uses WordPress jQuery style)
+- Move JavaScript files to footer on Frontend
+
+= 1.1.1 =
+- Fix and close issue [Hot Fix | Critical Error (#8)](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues/8)
 
 = 1.1.0 =
 * Fixed bug <a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues/1" target="_blank">Responsive issue in Elementor (#1)</a>.
