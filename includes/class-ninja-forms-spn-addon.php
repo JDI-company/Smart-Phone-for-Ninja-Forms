@@ -180,7 +180,6 @@ class Ninja_Forms_Spn_Addon {
 		$this->loader->add_action( 'ninja_forms_builder_templates', $plugin_builder_templates, 'add_templates' );
 
 		// Ninja Forms Filters
-		$this->loader->add_filter( 'ninja_forms_plugin_settings', $plugin_admin, 'add_select_multiple' );
 		$this->loader->add_filter( 'ninja_forms_register_fields', $plugin_admin, 'register_fields' );
 		$this->loader->add_filter( 'ninja_forms_field_template_file_paths', $plugin_public, 'register_template_path' );
 

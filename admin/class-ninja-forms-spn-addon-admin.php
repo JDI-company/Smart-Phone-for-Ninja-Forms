@@ -96,9 +96,9 @@ class Ninja_Forms_Spn_Addon_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( 'intlTelInput', plugin_dir_url( dirname( __FILE__ ) ) . 'vendor/intl-tel-input-master/build/js/intlTelInput-jquery.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( 'intlTelInputUtils', plugin_dir_url( dirname( __FILE__ ) ) . 'vendor/intl-tel-input-master/build/js/utils.js', array( 'intlTelInput' ), $this->version, true );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( dirname( __FILE__ ) ) . 'dist/admin/spn-back-end.min.js', array( 'jquery', 'intlTelInput' ), $this->version, true );
+		wp_enqueue_script( 'intlTelInput', plugin_dir_url( dirname( __FILE__ ) ) . 'vendor/intl-tel-input-master/build/js/intlTelInput-jquery.js', array(), '17.0.19', true );
+		wp_enqueue_script( 'intlTelInputUtils', plugin_dir_url( dirname( __FILE__ ) ) . 'vendor/intl-tel-input-master/build/js/utils.js', array( 'intlTelInput' ), '17.0.19', true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( dirname( __FILE__ ) ) . 'dist/admin/spn-back-end.min.js', array( 'intlTelInput' ), $this->version, true );
 
 	}
 
