@@ -33,7 +33,7 @@ class ITICountryCode {
     // Check if the model type is 'spn' and the value is not empty and a valid number
     if (model.get('type') === 'spn' && model.get('value') !== '' && !isNaN(Number(model.get('value')))) {
       const modelID = model.get('id')
-
+      
       // Get the phone input element and the wrapper element
       const $phone = jQuery('#nf-field-' + modelID)
       const $wrapper = $phone.parents('nf-field')
@@ -42,7 +42,7 @@ class ITICountryCode {
       this.$phoneHidden = $wrapper.find('#nf-field-' + modelID + '-hidden')
 
       // Extract the country code from the selected flag and update the hidden input value
-      const countryCode = $wrapper.find('.iti__selected-flag').attr('title').match(/[+\d]+/g).join('')
+      const countryCode = $wrapper.find('.iti__selected-flag').text().match(/[+\d]+/g).join('')
       this.$phoneHidden.val(countryCode + $phone.val())
     }
   }

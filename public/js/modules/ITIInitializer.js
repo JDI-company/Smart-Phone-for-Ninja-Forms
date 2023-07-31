@@ -88,7 +88,7 @@ class IntlTelInputInitializer {
       geoIpLookup: dataAttributes.allowIpLookUp,
       separateDialCode: dataAttributes.separateDialCode,
       formatOnDisplay: dataAttributes.formatOnDisplay,
-      utilsScript: '../../vendor/intl-tel-input-master/build/js/utils.js'
+      utilsScript: '../../node_modules/intl-tel-input/build/js/utils.js'
     })
   }
 
