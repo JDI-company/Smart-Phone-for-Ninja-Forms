@@ -10,5 +10,8 @@
     "standard": "^17.1.0",
     "webpack": "^5.75.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "intl-tel-input": "^18.1.8"
   }
 }
