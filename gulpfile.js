@@ -56,13 +56,12 @@ function compilePublicJS () {
       webpackStream({
         mode: 'production',
         output: {
-          filename: 'spn-front-end.min.js'
+          filename: 'spn-front-[name].min.js'
         },
         module: {
           rules: [
             {
               test: /\.(js)$/,
-              exclude: /(node_modules)/,
               loader: 'babel-loader',
               options: {
                 presets: ['@babel/preset-env']

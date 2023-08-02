@@ -6,6 +6,9 @@
  */
 
 import { codesISO2, codesISO2European } from '../utils'
+// import $ from 'jquery'
+// import intlTelInput from 'intl-tel-input'
+// import * as intlTelInputUtils from '../../../node_modules/intl-tel-input/build/js/utils.js'
 
 /**
  * Class to initialize International Telephone Input

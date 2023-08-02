@@ -12,6 +12,8 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "intl-tel-input": "^18.1.8"
+    "@types/intl-tel-input": "^18.1.0",
+    "intl-tel-input": "^18.1.8",
+    "jquery": "^3.7.0"
   }
 }
