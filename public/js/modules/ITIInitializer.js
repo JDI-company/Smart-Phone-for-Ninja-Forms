@@ -6,11 +6,7 @@
  */
 
 import { codesISO2, codesISO2European } from '../utils'
-<<<<<<< HEAD
 import $ from 'jquery'
-=======
-// import $ from 'jquery'
->>>>>>> 907480cb5e2504e7c0ff141fee5c2ee49609e24c
 import intlTelInput from 'intl-tel-input'
 // import * as intlTelInputUtils from '../../../node_modules/intl-tel-input/build/js/utils.js'
 
@@ -87,11 +83,11 @@ class IntlTelInputInitializer {
     intlTelInput($input[0], {
       initialCountry: dataAttributes.defaultCountry,
       preferredCountries: dataAttributes.preferredCountries,
-      onlyCountries: dataAttributes.onlyCountries || [],
+      onlyCountries: dataAttributes.onlyCountries,
       allowDropdown: dataAttributes.allowDropdown,
       nationalMode: dataAttributes.nationalMode,
       autoHideDialCode: dataAttributes.autoHideDialCode,
-      excludeCountries: dataAttributes.excludeCountries || [],
+      excludeCountries: dataAttributes.excludeCountries,
       geoIpLookup: dataAttributes.allowIpLookUp,
       separateDialCode: dataAttributes.separateDialCode,
       formatOnDisplay: dataAttributes.formatOnDisplay

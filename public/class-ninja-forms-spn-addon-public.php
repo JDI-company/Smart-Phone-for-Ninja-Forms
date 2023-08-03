@@ -95,14 +95,8 @@ class Ninja_Forms_Spn_Addon_Public {
 		 * class.
 		 */
 			
-<<<<<<< HEAD
 		//wp_enqueue_script( 'intlTelInput', plugin_dir_url( dirname( __FILE__ ) ) . 'node_modules/intl-tel-input/build/js/intlTelInput-jquery.js', array(), '18.1.8', true );
 		//wp_enqueue_script( 'intlTelInputUtils', plugin_dir_url( dirname( __FILE__ ) ) . 'node_modules/intl-tel-input/build/js/utils.js', array( ), '18.1.8', true );
-=======
-		// wp_enqueue_script( 'intlTelInput', plugin_dir_url( dirname( __FILE__ ) ) . 'node_modules/intl-tel-input/build/js/intlTelInput-jquery.js', array(), '18.1.8', true );
-		// wp_enqueue_script( 'intlTelInputUtils', plugin_dir_url( dirname( __FILE__ ) ) . 'node_modules/intl-tel-input/build/js/utils.js', array( ), '18.1.8', true );
-		// wp_enqueue_script( 'intlTelInputUtils', plugin_dir_url( dirname( __FILE__ ) ) . 'node_modules/intl-tel-input/build/js/utils.js', array( ), '18.1.8', true );
->>>>>>> 907480cb5e2504e7c0ff141fee5c2ee49609e24c
 		wp_enqueue_script( $this->plugin_name . '-vendors', plugin_dir_url( dirname( __FILE__ ) ) . 'dist/public/spn-front-vendors.min.js', array(), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( dirname( __FILE__ ) ) . 'dist/public/spn-front-main.min.js', array( 'nf-front-end', $this->plugin_name . '-vendors' ), $this->version, true );
 
