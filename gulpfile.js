@@ -81,7 +81,7 @@ function compilePublicJS () {
               }
             }
           }
-        },
+        }
       }),
       webpack
     )
