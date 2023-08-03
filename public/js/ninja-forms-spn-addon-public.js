@@ -6,14 +6,14 @@
  * @since 1.0.0
  */
 import { SPNInput } from './modules/SPNInputInitializer'
-import { ITICountryCode } from './modules/ITICountryCode'
+// import { ITICountryCode } from './modules/ITICountryCode'
 
 function initSPN () {
   /* eslint-disable no-new */
 
   new SPNInput().init()
   /* eslint-disable no-new */
-  new ITICountryCode().syncWithSPN()
+  // new ITICountryCode().syncWithSPN()
 }
 
 // Initialize SPN functionality

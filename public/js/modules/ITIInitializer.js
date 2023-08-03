@@ -83,11 +83,11 @@ class IntlTelInputInitializer {
     intlTelInput($input[0], {
       initialCountry: dataAttributes.defaultCountry,
       preferredCountries: dataAttributes.preferredCountries,
-      onlyCountries: dataAttributes.onlyCountries,
+      onlyCountries: dataAttributes.onlyCountries || [],
       allowDropdown: dataAttributes.allowDropdown,
       nationalMode: dataAttributes.nationalMode,
       autoHideDialCode: dataAttributes.autoHideDialCode,
-      excludeCountries: dataAttributes.excludeCountries,
+      excludeCountries: dataAttributes.excludeCountries || [],
       geoIpLookup: dataAttributes.allowIpLookUp,
       separateDialCode: dataAttributes.separateDialCode,
       formatOnDisplay: dataAttributes.formatOnDisplay

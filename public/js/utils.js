@@ -4,7 +4,6 @@
  * @since 1.2.0
  */
 
-
 // Set European ISO2 codes
 const codesISO2European = [
   'al', 'ad', 'at', 'by', 'be', 'ba', 'bg', 'hr', 'cz', 'dk',
@@ -20,8 +19,5 @@ function codesISO2 (allCountries) {
     return country.iso2
   })
 }
-
-// class Utils {
-// }
 
 export { codesISO2European, codesISO2 }
