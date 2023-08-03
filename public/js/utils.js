@@ -4,8 +4,6 @@
  * @since 1.2.0
  */
 
-// Get All Countries Codes from intTelInput
-const allCountries = [...window.intlTelInputGlobals.getCountryData()]
 
 // Set European ISO2 codes
 const codesISO2European = [
@@ -17,11 +15,13 @@ const codesISO2European = [
 ]
 
 // Set All ISO2 codes
-const codesISO2 = allCountries.map((country) => {
-  return country.iso2
-})
+function codesISO2 (allCountries) {
+  allCountries.map((country) => {
+    return country.iso2
+  })
+}
 
 // class Utils {
 // }
 
-export { allCountries, codesISO2European, codesISO2 }
+export { codesISO2European, codesISO2 }

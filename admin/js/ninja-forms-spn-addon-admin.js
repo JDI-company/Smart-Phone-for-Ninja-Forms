@@ -15,7 +15,7 @@ Array.prototype.remove = function (value) {
  * SyncCountriesChoice
  */
 (function ($) {
-  $(document).ready(function () {
+  jQuery(function () {
     const target = document.body
     const config = {
       childList: true
