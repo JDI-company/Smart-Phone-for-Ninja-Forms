@@ -5,7 +5,7 @@
  * @since 1.2.0
  */
 
-import { codesISO2, codesISO2European } from '../utils'
+import { codesISO2European } from '../utils'
 import $ from 'jquery'
 import intlTelInput from 'intl-tel-input'
 // import * as intlTelInputUtils from '../../../node_modules/intl-tel-input/build/js/utils.js'
@@ -102,10 +102,13 @@ class IntlTelInputInitializer {
   getOnlyCountries ($input) {
     let onlyCountries = $input.data('only-countries').split(',')
     const defaultCountry = $input.data('default-country')
+    const allCountries = [...window.intlTelInputGlobals.getCountryData()]
+    const codesISO2 = allCountries.map((country) => {
+      return country.iso2
+    })
 
     if (onlyCountries.includes('all')) {
-      const allCountries = [...window.intlTelInputGlobals.getCountryData()]
-      onlyCountries = codesISO2(allCountries)
+      onlyCountries = codesISO2()
     } else if (onlyCountries.includes('european')) {
       onlyCountries = onlyCountries.remove('european')
       onlyCountries = onlyCountries.concat(codesISO2European)
