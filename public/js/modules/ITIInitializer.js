@@ -108,12 +108,12 @@ class IntlTelInputInitializer {
     })
 
     if (onlyCountries.includes('all')) {
-      onlyCountries = codesISO2()
+      onlyCountries = onlyCountries.remove('all')
+      onlyCountries = onlyCountries.concat(codesISO2).remove('gb')
     } else if (onlyCountries.includes('european')) {
       onlyCountries = onlyCountries.remove('european')
       onlyCountries = onlyCountries.concat(codesISO2European)
     }
-    
     return {
       onlyCountries,
       defaultCountry

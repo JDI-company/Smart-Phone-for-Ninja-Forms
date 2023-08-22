@@ -23,7 +23,7 @@ function compileAdminJS () {
       webpackStream({
         mode: 'production',
         output: {
-          filename: 'spn-back-end.min.js'
+          filename: 'spn-back-[name].min.js'
         },
         module: {
           rules: [
