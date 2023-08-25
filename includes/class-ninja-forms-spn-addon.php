@@ -79,7 +79,6 @@ class Ninja_Forms_Spn_Addon {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->check_ninja_form_deactivation();
-
 	}
 
 	/**
@@ -104,42 +103,41 @@ class Ninja_Forms_Spn_Addon {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ninja-forms-spn-addon-loader.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-ninja-forms-spn-addon-loader.php';
 
 		/**
 		 * TODO
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ninja-forms-spn-addon-utils.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-ninja-forms-spn-addon-utils.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ninja-forms-spn-addon-i18n.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-ninja-forms-spn-addon-i18n.php';
 
 		/**
 		 * TODO
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ninja-forms-spn-addon-countries-handler.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/class-ninja-forms-spn-addon-countries-handler.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-ninja-forms-spn-addon-admin.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-ninja-forms-spn-addon-admin.php';
 
 		/**
 		 * TODO
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ninja-forms-builder-templates/class-spn-builder-templates.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/ninja-forms-builder-templates/class-spn-builder-templates.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-ninja-forms-spn-addon-public.php';
+		require_once plugin_dir_path( __DIR__ ) . 'public/class-ninja-forms-spn-addon-public.php';
 
 		$this->loader = new Ninja_Forms_Spn_Addon_Loader();
-
 	}
 
 	/**
@@ -156,7 +154,6 @@ class Ninja_Forms_Spn_Addon {
 		$plugin_i18n = new Ninja_Forms_Spn_Addon_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
 	}
 
 	/**
@@ -182,7 +179,6 @@ class Ninja_Forms_Spn_Addon {
 		// Ninja Forms Filters
 		$this->loader->add_filter( 'ninja_forms_register_fields', $plugin_admin, 'register_fields' );
 		$this->loader->add_filter( 'ninja_forms_field_template_file_paths', $plugin_public, 'register_template_path' );
-
 	}
 
 	/**
@@ -198,7 +194,6 @@ class Ninja_Forms_Spn_Addon {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
 	}
 
 	/**
@@ -243,7 +238,7 @@ class Ninja_Forms_Spn_Addon {
 
 	public function check_ninja_form_deactivation() {
 		if ( strpos( $_SERVER['REQUEST_URI'], '/wp-admin/plugins.php?action=deactivate&plugin=ninja-forms%2Fninja-forms.php' ) !== false ) {
-			deactivate_plugins( plugin_dir_path( dirname( __FILE__ ) ) . $this->plugin_name . '.php' );
+			deactivate_plugins( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
 		}
 	}
 
