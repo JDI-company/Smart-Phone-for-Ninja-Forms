@@ -8,7 +8,7 @@
 import { codesISO2European } from '../utils'
 import $ from 'jquery'
 import intlTelInput from 'intl-tel-input'
-import intlTelInputUtils from '../../../node_modules/intl-tel-input/build/js/utils'
+import intlTelInputUtils from 'intl-tel-input/build/js/utils'
 
 /**
  * Class to initialize International Telephone Input

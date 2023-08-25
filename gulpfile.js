@@ -98,7 +98,12 @@ function compilePublicJS () {
 
 function compileCss () {
   return src('./public/scss/ninja-forms-spn-addon-public.scss')
-    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: [
+        './node_modules'
+      ]
+    }).on('error', sass.logError))
     .pipe(cssnano())
     .pipe(concat('addon-public.css'))
     .pipe(rename({ suffix: '.min' }))
