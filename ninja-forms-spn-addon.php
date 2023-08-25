@@ -80,6 +80,22 @@ register_deactivation_hook( __FILE__, 'deactivate_ninja_forms_spn_addon' );
 require plugin_dir_path( __FILE__ ) . 'includes/class-ninja-forms-spn-addon.php';
 
 /**
+ * Check if it is correct page to run plugin
+ */
+function is_spn_allowed_to_run() {
+	$is_admin_area       = is_admin();
+	$is_ninja_forms_page = isset( $_GET['page'] ) && 'ninja-forms' === $_GET['page'];
+	$is_ajax_request     = defined( 'DOING_AJAX' ) && DOING_AJAX;
+	$is_form_id_missing  = ! isset( $_GET['form_id'] );
+
+	if ( $is_admin_area && $is_ninja_forms_page && ! $is_ajax_request && $is_form_id_missing ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * Begins execution of the plugin.
  *
  * Since everything within the plugin is registered via hooks,
@@ -89,10 +105,12 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-ninja-forms-spn-addon.php'
  * @since    1.0.0
  */
 function run_ninja_forms_spn_addon() {
+	if ( ! is_spn_allowed_to_run() ) {
+		return;
+	}
 
 	$plugin = new Ninja_Forms_Spn_Addon();
 	$plugin->run();
-
 }
 
 run_ninja_forms_spn_addon();
