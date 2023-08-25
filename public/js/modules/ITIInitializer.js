@@ -8,7 +8,7 @@
 import { codesISO2European } from '../utils'
 import $ from 'jquery'
 import intlTelInput from 'intl-tel-input'
-// import * as intlTelInputUtils from '../../../node_modules/intl-tel-input/build/js/utils.js'
+import intlTelInputUtils from '../../../node_modules/intl-tel-input/build/js/utils'
 
 /**
  * Class to initialize International Telephone Input
@@ -91,7 +91,7 @@ class IntlTelInputInitializer {
       geoIpLookup: dataAttributes.allowIpLookUp,
       separateDialCode: dataAttributes.separateDialCode,
       formatOnDisplay: dataAttributes.formatOnDisplay,
-      utilsScript: '../../node_modules/intl-tel-input/build/js/utils.js'
+      utilsScript: intlTelInputUtils
     })
   }
 
@@ -110,7 +110,7 @@ class IntlTelInputInitializer {
 
     if (onlyCountries.includes('all')) {
       onlyCountries = onlyCountries.remove('all')
-      onlyCountries = onlyCountries.concat(codesISO2).remove('gb')
+      onlyCountries = onlyCountries.concat(codesISO2)
     } else if (onlyCountries.includes('european')) {
       onlyCountries = onlyCountries.remove('european')
       onlyCountries = onlyCountries.concat(codesISO2European)
