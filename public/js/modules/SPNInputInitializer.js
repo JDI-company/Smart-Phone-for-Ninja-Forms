@@ -17,6 +17,7 @@ class SPNInput {
   init () {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
+    nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnFormLoad)
   }
 
   /**
@@ -25,11 +26,16 @@ class SPNInput {
    */
   initInputOnFormLoad (model) {
     // Get the parent element of the model's view
-    const $parentElement = jQuery(model.el)
+    let parentElementId = model.el
+
+    if('formModel' in model && !parentElementId){
+      parentElementId = '#nf-form-' + model.formModel.id + '-cont';
+    }
 
     // Initialize intlTelInput on the parent element
     /* eslint-disable no-new */
-    new IntlTelInputInitializer($parentElement).init()
+    new IntlTelInputInitializer(parentElementId).init()
+    
   }
 
   /**
@@ -57,7 +63,6 @@ class SPNInput {
         if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
           if (mutation.target.tagName === initiator) {
             const $parentElement = _this._getNFNode(data.form_id)
-
             if ($parentElement) {
               /* eslint-disable no-new */
               new IntlTelInputInitializer($parentElement).init()
