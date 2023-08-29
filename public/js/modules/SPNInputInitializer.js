@@ -15,8 +15,6 @@ class SPNInput {
    * Initialize SPNInput instance and listen to the 'render:view' event.
    */
   init () {
-    console.log(12)
-
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
     nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnChangePage)
@@ -24,7 +22,7 @@ class SPNInput {
   }
 
   initInputOnConditionalLogic(fieldModel) {
-    if ( fieldModel.changed.visible === true){
+    if ( 'visible' in fieldModel.changed && fieldModel.changed.visible === true){
       const parentElementId = '#nf-form-' + fieldModel.attributes.formID + '-cont'
 
       // Initialize intlTelInput on the parent element
