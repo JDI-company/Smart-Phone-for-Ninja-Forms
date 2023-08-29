@@ -5,6 +5,7 @@
  */
 
 import { IntlTelInputInitializer } from './ITIInitializer'
+import $ from 'jquery'
 
 /**
  * Class representing SPNInput functionality.
@@ -15,6 +16,27 @@ class SPNInput {
    */
   init () {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
+    this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
+    nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnChangePage)
+    this._listenTo( Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic )
+  }
+
+  initInputOnConditionalLogic(fieldModel) {
+    if ( 'visible' in fieldModel.changed && fieldModel.changed.visible === true){
+      const parentElementId = '#nf-form-' + fieldModel.attributes.formID + '-cont'
+
+      // Initialize intlTelInput on the parent element
+      /* eslint-disable no-new */
+      new IntlTelInputInitializer(parentElementId).init()
+    }
+  }
+
+  initInputOnChangePage (model) {
+    const parentElementId = '#nf-form-' + model.formModel.id + '-cont'
+
+    // Initialize intlTelInput on the parent element
+    /* eslint-disable no-new */
+    new IntlTelInputInitializer(parentElementId).init()
   }
 
   /**
@@ -23,34 +45,63 @@ class SPNInput {
    */
   initInputOnFormLoad (model) {
     // Get the parent element of the model's view
-    const $parentElement = jQuery(model.el)
+    const parentElementId = model.el
 
     // Initialize intlTelInput on the parent element
     /* eslint-disable no-new */
-    new IntlTelInputInitializer($parentElement).init()
-
-    // Initialize input elements when form is submitted
-    this._initInputOnFormSubmit($parentElement)
+    new IntlTelInputInitializer(parentElementId).init()
+    
   }
 
   /**
-   * Set up a MutationObserver to detect changes in the DOM and re-initialize intlTelInput.
+   * Initialize input elements when form is submitted
+   * We are starting Mutation Observer when user submits form
+   * Then, if no errors were found we are looking for the initiator
+   * It's a tag of the target mutation. When we get NF Wrapper
+   * we call IntlTelInputInitializer class.
+   *
    * @param {jQuery} $parentElement - The parent element of the form input.
    * @private
    */
-  _initInputOnFormSubmit ($parentElement) {
-    const targetNode = $parentElement.parent()[0]
-    const observer = new MutationObserver(function (mutationsList) {
+  _initInputOnFormSubmit (response) {
+    if (response.errors.length > 0) {
+      return
+    }
+
+    const data = response.data
+    const targetNode = document.body
+    const initiator = 'NF-FIELDS-WRAP'
+    const _this = this
+
+    const observer = new MutationObserver(function (mutationsList, observer) {
       for (const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-        /* eslint-disable no-new */
-          new IntlTelInputInitializer($parentElement).init()
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          if (mutation.target.tagName === initiator) {
+            const $parentElement = _this._getNFNode(data.form_id)
+            if ($parentElement) {
+              /* eslint-disable no-new */
+              new IntlTelInputInitializer($parentElement).init()
+            }
+
+            // Stop the observer
+            observer.disconnect()
+          }
         }
       }
     })
 
-    const config = { attributes: true, childList: true, subtree: true }
+    const config = { childList: true, subtree: true }
     observer.observe(targetNode, config)
+  }
+
+  /**
+   * Get Ninja Forms Node (the main wrapper)
+   * @param {string} formID Ninja Form ID
+   * @returns jQuery
+   * @private
+   */
+  _getNFNode (formID) {
+    return $(`#nf-form-${formID}-cont`)
   }
 
   /**

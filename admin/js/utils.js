@@ -4,6 +4,8 @@
  * @since 1.0.0
  */
 
+import intlTelInput from 'intl-tel-input'
+
 const $ = jQuery
 
 // Get All Countries Codes from intTelInput

@@ -42,7 +42,11 @@ class ITICountryCode {
       this.$phoneHidden = $wrapper.find('#nf-field-' + modelID + '-hidden')
 
       // Extract the country code from the selected flag and update the hidden input value
-      const countryCode = $wrapper.find('.iti__selected-flag').attr('title').match(/[+\d]+/g).join('')
+      let countryCode = $wrapper.find('.iti__selected-flag').attr('title').match(/[+\d]+/g)?.join('')
+      if (!countryCode) {
+        countryCode = $wrapper.find('.iti__selected-flag').text().match(/[+\d]+/g)?.join('')
+      }
+
       this.$phoneHidden.val(countryCode + $phone.val())
     }
   }
@@ -56,7 +60,7 @@ class ITICountryCode {
    */
   _submitNewPhoneNumber (model) {
     // Check if the model type is 'spn' and update its value with the hidden input value
-    if (model.get('type') === 'spn') {
+    if (model.get('type') === 'spn' && this.$phoneHidden) {
       model.set('value', this.$phoneHidden.val())
     }
   }
