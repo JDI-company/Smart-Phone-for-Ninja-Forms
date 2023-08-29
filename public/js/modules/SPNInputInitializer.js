@@ -15,9 +15,30 @@ class SPNInput {
    * Initialize SPNInput instance and listen to the 'render:view' event.
    */
   init () {
+    console.log(12)
+
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
-    nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnFormLoad)
+    nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnChangePage)
+    this._listenTo( Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic )
+  }
+
+  initInputOnConditionalLogic(fieldModel) {
+    if ( fieldModel.changed.visible === true){
+      const parentElementId = '#nf-form-' + fieldModel.attributes.formID + '-cont'
+
+      // Initialize intlTelInput on the parent element
+      /* eslint-disable no-new */
+      new IntlTelInputInitializer(parentElementId).init()
+    }
+  }
+
+  initInputOnChangePage (model) {
+    const parentElementId = '#nf-form-' + model.formModel.id + '-cont'
+
+    // Initialize intlTelInput on the parent element
+    /* eslint-disable no-new */
+    new IntlTelInputInitializer(parentElementId).init()
   }
 
   /**
@@ -26,11 +47,7 @@ class SPNInput {
    */
   initInputOnFormLoad (model) {
     // Get the parent element of the model's view
-    let parentElementId = model.el
-
-    if('formModel' in model && !parentElementId){
-      parentElementId = '#nf-form-' + model.formModel.id + '-cont'
-    }
+    const parentElementId = model.el
 
     // Initialize intlTelInput on the parent element
     /* eslint-disable no-new */
