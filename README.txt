@@ -55,17 +55,17 @@ or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jd
 == Changelog ==
 
 = 1.2.1 =
-## What's Changed
-* Bug Fix: **NF Form Multistep** plugin doesn't work with SPN
-* Bug Fix: **NF Form Conditional logic** plugin doesn't work with SPN
-* Bug Fix: **NF Form** doesn't send if SPN input is empty
-* Bug Fix: **NF Form** throws error if **Separate Dial Code** wasn't chosen
-* Bug Fix: SPN throws "out of stack" in Elementor & Default Country
-* 13-spn-install-intltelinput-with-npm-not-static-files by @roman1923, @yaroslav-borodii  in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/14
-* Restricted plugin run (only for Ninja forms, wp-ajax, User Frontend)
-* Code Refactoring
-* PHP Code Beautifier
-* IntlTelInput version update to the 18.2.1
+#### What's Changed
+- Bug Fix: **NF Form Multistep** plugin doesn't work with SPN
+- Bug Fix: **NF Form Conditional logic** plugin doesn't work with SPN
+- Bug Fix: **NF Form** doesn't send if SPN input is empty
+- Bug Fix: **NF Form** throws error if **Separate Dial Code** wasn't chosen
+- Bug Fix: SPN throws "out of stack" in Elementor & Default Country
+- 13-spn-install-intltelinput-with-npm-not-static-files by @roman1923, @yaroslav-borodii  in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/14
+- Restricted plugin run (only for Ninja forms, wp-ajax, User Frontend)
+- Code Refactoring
+- PHP Code Beautifier
+- IntlTelInput version update to the 18.2.1
 
 = 1.2.0 =
 #### User Notes
