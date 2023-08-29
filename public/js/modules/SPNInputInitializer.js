@@ -17,6 +17,26 @@ class SPNInput {
   init () {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
+    nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnChangePage)
+    this._listenTo( Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic )
+  }
+
+  initInputOnConditionalLogic(fieldModel) {
+    if ( 'visible' in fieldModel.changed && fieldModel.changed.visible === true){
+      const parentElementId = '#nf-form-' + fieldModel.attributes.formID + '-cont'
+
+      // Initialize intlTelInput on the parent element
+      /* eslint-disable no-new */
+      new IntlTelInputInitializer(parentElementId).init()
+    }
+  }
+
+  initInputOnChangePage (model) {
+    const parentElementId = '#nf-form-' + model.formModel.id + '-cont'
+
+    // Initialize intlTelInput on the parent element
+    /* eslint-disable no-new */
+    new IntlTelInputInitializer(parentElementId).init()
   }
 
   /**
@@ -25,11 +45,12 @@ class SPNInput {
    */
   initInputOnFormLoad (model) {
     // Get the parent element of the model's view
-    const $parentElement = jQuery(model.el)
+    const parentElementId = model.el
 
     // Initialize intlTelInput on the parent element
     /* eslint-disable no-new */
-    new IntlTelInputInitializer($parentElement).init()
+    new IntlTelInputInitializer(parentElementId).init()
+    
   }
 
   /**
@@ -57,7 +78,6 @@ class SPNInput {
         if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
           if (mutation.target.tagName === initiator) {
             const $parentElement = _this._getNFNode(data.form_id)
-
             if ($parentElement) {
               /* eslint-disable no-new */
               new IntlTelInputInitializer($parentElement).init()
