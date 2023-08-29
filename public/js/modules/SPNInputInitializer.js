@@ -29,7 +29,7 @@ class SPNInput {
     let parentElementId = model.el
 
     if('formModel' in model && !parentElementId){
-      parentElementId = '#nf-form-' + model.formModel.id + '-cont';
+      parentElementId = '#nf-form-' + model.formModel.id + '-cont'
     }
 
     // Initialize intlTelInput on the parent element

@@ -16,7 +16,7 @@ import intlTelInputUtils from 'intl-tel-input/build/js/utils'
 class IntlTelInputInitializer {
   /**
    * Constructor method to initialize parent element
-   * @param {String} $parentElement - The parent element.
+   * @param {String} parentElement - The parent element.
    */
   constructor (parentElementId) {
     this.$parentElement = jQuery(parentElementId)
