@@ -2,9 +2,9 @@
 Contributors: yaroslavborodii, max10110
 Donate link: https://jdi.company
 Tags: Smart Phone Addon, Ninja Forms, SPN, intlTelInput, International Telephone Input
-Requires at least: 4.0
-Tested up to: 6.3.0
-Stable tag: 1.2.1
+Requires at least: 6.0
+Tested up to: 6.4.0
+Stable tag: 1.2.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
@@ -53,6 +53,11 @@ or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jd
 4. Screenshot 4. Some options that exist in the 'Restrictions' section of the field.
 
 == Changelog ==
+
+= 1.2.2 =
+#### What's Changed
+- Check plugin for compatibility with PHP version 8.2 & WordPress 6.3.2
+- Bug Fix: CSS fix by @haet in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/21
 
 = 1.2.1 =
 #### What's Changed
