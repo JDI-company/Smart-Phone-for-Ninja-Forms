@@ -220,5 +220,35 @@ class SPN_Field extends NF_Fields_Phone {
 			'help'  => esc_html__( 'In the dropdown, display all countries except the ones you specify here', 'ninja-forms-spn-addon' ),
 			'value' => true,
 		);
+
+		/**
+		 * Add Validation Type
+		 *
+		 * @since    1.0.0
+		 */
+
+		$validation_options = array(
+			array(
+				'label' => 'Precise',
+				'value' => 'precise',
+			),
+			array(
+			'label' => 'Practical',
+			'value' => 'practical',
+			),
+		);
+
+		$this->_settings['validation_type'] = array(
+			'name'    => 'validation_type',
+			'type'    => 'select',
+			'label'   => esc_html__( 'Validation Type', 'ninja-forms-spn-addon' ),
+			'width'   => 'full',
+			'group'   => 'restrictions',
+			'options' => $validation_options,
+			'help'    => esc_html__( 'You can choose type of validation', 'ninja-forms-spn-addon' ),
+		);
+
+
+
 	}
 }

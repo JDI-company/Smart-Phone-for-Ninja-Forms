@@ -5,7 +5,7 @@
  */
 
 import { IntlTelInputInitializer } from './ITIInitializer'
-import $ from 'jquery'
+import $, { type } from 'jquery'
 
 /**
  * Class representing SPNInput functionality.
@@ -14,15 +14,73 @@ class SPNInput {
   /**
    * Initialize SPNInput instance and listen to the 'render:view' event.
    */
+
+  constructor () {
+    // Initialize an instance of IntlTelInputInitializer
+    this.itiInitializer = null
+  }
+
   init () {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
-    nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnChangePage)
-    this._listenTo( Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic )
+    nfRadio.channel('nfMP').on('change:part', this.initInputOnChangePage)
+    this._listenTo(Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic)
   }
 
-  initInputOnConditionalLogic(fieldModel) {
-    if ( 'visible' in fieldModel.changed && fieldModel.changed.visible === true){
+  validate (model) {
+    // Get the parent element of the input field
+    const $parentElement = $('#nf-form-' + model.attributes.formID + '-cont')
+    // Find the input field within the parent element
+    const vai = $parentElement.find('.spn-container input[type="tel"]')
+    // Initialize the IntlTelInputInitializer if not already initialized
+    if (!this.itiInitializer) {
+      this.itiInitializer = new IntlTelInputInitializer($parentElement).init()
+    }
+    // Define an error map for different validation errors
+    const errorMap = ['Invalid number', 'Invalid country code', 'Too short', 'Too long', 'Invalid number']
+    const errorArea = $('.spn-container .nf-error-custom-field-error')
+    const typeOfValidation = vai.attr('data-type-of-validation')
+    const iti = this.itiInitializer
+    const num = iti.getNumber()
+    let val
+    // Perform validation based on the type of validation
+    if (typeOfValidation === 'precise') {
+      val = iti.isValidNumber()
+    } else {
+      val = iti.isPossibleNumber()
+    }
+    const ariaRequiredValue = vai.attr('aria-required')
+    // Check if the field is required
+    if (ariaRequiredValue === true) {
+      if (val) {
+      // Remove Error from Model
+        Backbone.Radio.channel('fields').request('remove:error', model.get('id'), 'custom-field-error')
+        errorArea.text('')
+      } else {
+      // Add Error to Model
+        const errorCode = iti.getValidationError()
+        const errorText = errorMap[errorCode]
+        Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'custom-field-error', errorText)
+        errorArea.html('errorText')
+      }
+    } else {
+      // If the field is not required
+      if (val || num === '') {
+        // Remove Error from Model
+        Backbone.Radio.channel('fields').request('remove:error', model.get('id'), 'custom-field-error')
+        errorArea.text('')
+      } else {
+        // Add Error to Model
+        const errorCode = iti.getValidationError()
+        const errorText = errorMap[errorCode]
+        Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'custom-field-error', '')
+        errorArea.html(errorText)
+      }
+    }
+  }
+
+  initInputOnConditionalLogic (fieldModel) {
+    if ('visible' in fieldModel.changed && fieldModel.changed.visible === true) {
       const parentElementId = '#nf-form-' + fieldModel.attributes.formID + '-cont'
 
       // Initialize intlTelInput on the parent element
@@ -49,8 +107,9 @@ class SPNInput {
 
     // Initialize intlTelInput on the parent element
     /* eslint-disable no-new */
-    new IntlTelInputInitializer(parentElementId).init()
-    
+
+    const changedInput = new IntlTelInputInitializer(parentElementId).init()
+    this._listenTo(Backbone.Radio.channel('submit'), 'validate:field', this.validate)
   }
 
   /**

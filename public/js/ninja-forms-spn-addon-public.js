@@ -7,6 +7,7 @@
  */
 import { SPNInput } from './modules/SPNInputInitializer'
 import { ITICountryCode } from './modules/ITICountryCode'
+import { } from './modules/validation'
 
 function initSPN () {
   /* eslint-disable no-new */
