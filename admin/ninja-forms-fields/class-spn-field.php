@@ -224,18 +224,25 @@ class SPN_Field extends NF_Fields_Phone {
 		/**
 		 * Add Validation Type
 		 *
-		 * @since    1.0.0
+		 * @since    1.3.0
 		 */
-
 		$validation_options = array(
 			array(
-				'label' => 'Precise',
-				'value' => 'precise',
+				'label' => 'Practical (default)',
+				'value' => 'practical',
 			),
 			array(
-			'label' => 'Practical',
-			'value' => 'practical',
+				'label' => 'Precise (updates every month)',
+				'value' => 'precise',
 			),
+		);
+
+		$validation_help = __(
+			'- Practical: Check if the current number is valid based on its length<br>
+            - Precise: Check if the current number is valid using precise matching rules for each country/area code.
+            Note that these rules change each month for various countries around the world, so you need to be careful to keep the plugin up-to-date else you will start rejecting valid numbers.<br><br>
+            <a href="https://intl-tel-input.com/examples/validation.html" target="_blank" rel="noopener">Click to open example</a>',
+			'ninja-forms-spn-addon'
 		);
 
 		$this->_settings['validation_type'] = array(
@@ -245,10 +252,7 @@ class SPN_Field extends NF_Fields_Phone {
 			'width'   => 'full',
 			'group'   => 'restrictions',
 			'options' => $validation_options,
-			'help'    => esc_html__( 'You can choose type of validation', 'ninja-forms-spn-addon' ),
+			'help'    => wp_kses_post( $validation_help ),
 		);
-
-
-
 	}
 }

@@ -28,14 +28,12 @@ class IntlTelInputInitializer {
   init () {
     const $inputPath = this.getInputPath()
 
-    let initedITI = null
     jQuery($inputPath).each((index, element) => {
       const $input = jQuery(element)
       const dataAttributes = this.extractDataAttributes($input)
 
-      initedITI = this.initializeIntlTelInput($input, dataAttributes)
+      this.initializeIntlTelInput($input, dataAttributes)
     })
-    return initedITI
   }
 
   /**
@@ -82,7 +80,7 @@ class IntlTelInputInitializer {
    * @param {Object} dataAttributes - Extracted data attributes.
    */
   initializeIntlTelInput ($input, dataAttributes) {
-    return intlTelInput($input[0], {
+    intlTelInput($input[0], {
       initialCountry: dataAttributes.defaultCountry,
       preferredCountries: dataAttributes.preferredCountries,
       onlyCountries: dataAttributes.onlyCountries,
