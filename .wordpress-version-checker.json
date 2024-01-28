@@ -1,5 +1,5 @@
 {
   "readme": "README.txt",
-  "channel": "stable",
+  "channel": "rc",
   "assignees": []
 }
