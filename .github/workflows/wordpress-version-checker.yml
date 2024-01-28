@@ -2,11 +2,6 @@ name: "WordPress version checker"
 
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'WordPress version checker'
   schedule:
     - cron: '0 0 * * 0'
 
