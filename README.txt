@@ -60,6 +60,20 @@ or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jd
 
 == Changelog ==
 
+= 1.3.0 =
+#### What's Changed
+- Create dependabot.yml by @yaroslav-borodii in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/24
+- Bump gulp-autoprefixer from 8.0.0 to 9.0.0 by @dependabot in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/25
+- feat: Wordpress version checker by @yaroslav-borodii in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/29
+- fix: Couldn't get the repository readme by @yaroslav-borodii in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/30
+- Add Field Validation by @BrassyDANYL in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/26
+- Bump browser-sync from 2.29.3 to 3.0.2 by @dependabot in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/27
+- Bump intl-tel-input from 18.5.3 to 19.5.6 by @dependabot in https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/37
+- [fix: Remove unusable mutation observer package](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/commit/36b635f52d29922207df5afa8dcf93cccdc9d98f)
+- [Add .gitattributes file for clean Release archive](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/commit/4eba1bc25f57361d7b5c7887ea90048615677728)
+- [fix: Major intltelinput update breaks SPN validation functionallity](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/37/commits/b0430d3daa3517b18ed420e5720206f0fdfca373)
+- [fix: gulp-concat bumped CommonJS support](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/37/commits/f08e791eec886e31b3bb9361fad382053ac33042)
+
 = 1.2.2 =
 #### What's Changed
 - Check plugin for compatibility with PHP version 8.2 & WordPress 6.3.2
