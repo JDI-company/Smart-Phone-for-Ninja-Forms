@@ -38,6 +38,10 @@ class SPNValidation {
    * @see https://github.com/jackocnr/intl-tel-input#utilities-script
    */
   static ITIValidation (model) {
+    if (!model.attributes.element_templates.includes('spn')) {
+      return
+    }
+
     // Get the parent element of the input field
     const $parentElement = $('#nf-form-' + model.attributes.formID + '-cont')
 
