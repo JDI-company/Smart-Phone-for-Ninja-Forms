@@ -5,8 +5,8 @@
 
 # Project source
 package.json export-ignore
+package-lock.json export-ignore
 gulpfile.js export-ignore
-README.MD export-ignore
 ## Admin
 admin/js/ export-ignore
 ## Public
