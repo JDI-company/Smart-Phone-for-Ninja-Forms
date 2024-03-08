@@ -5,8 +5,8 @@
  *
  * @since 1.0.0
  */
-import { SPNInput } from './modules/SPNInputInitializer'
-import { ITICountryCode } from './modules/ITICountryCode'
+import { SPNInput } from './modules/SPNInputInitializer.js'
+import { ITICountryCode } from './modules/ITICountryCode.js'
 
 function initSPN () {
   /* eslint-disable no-new */

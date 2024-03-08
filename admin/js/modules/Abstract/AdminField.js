@@ -4,7 +4,7 @@
  * @class AdminField
  */
 
-import { propDisabled, propSelected } from '../../utils'
+import { propDisabled, propSelected } from '../../utils.js'
 
 const $ = jQuery
 
