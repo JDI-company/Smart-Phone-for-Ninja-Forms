@@ -45,6 +45,12 @@ If your site was broken after activation our plugin,
 please, create issue here: https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues
 or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jdi.company</a>
 
+= Compatibility with Ninja Forms addons =
+- Ninja Forms:⠀⠀⠀⠀⠀⠀⠀OK | v3.8.0
+- NF Conditional Logic:⠀ OK | v3.1
+- NF Multi-Part Forms: ⠀ OK | v3.0.26
+- NF Layout and Styles: ⠀OK | v3.0.29
+
 == Screenshots ==
 
 1. Screenshot 1. Front-end example. Default field (without changes).

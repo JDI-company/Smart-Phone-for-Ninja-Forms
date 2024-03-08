@@ -60,3 +60,9 @@ In the dropdown, display all countries except the ones you specify here.
 <img width="600" alt="Format On Display" src="https://user-images.githubusercontent.com/46939084/204010814-64c5bb1d-7ee7-4df2-ba72-f93fd1d9f36d.png">
 
 Format the input value (according to the National Mode option) 
+
+## Compatibility with Ninja Forms addons
+- Ninja Forms: OK | v3.8.0
+- NF Conditional Logic: OK | v3.1
+- NF Multi-Part Forms: OK | v3.0.26
+- NF Layout and Styles: OK | v3.0.29

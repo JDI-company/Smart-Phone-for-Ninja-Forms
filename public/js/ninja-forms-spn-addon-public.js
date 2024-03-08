@@ -10,8 +10,8 @@ import { ITICountryCode } from './modules/ITICountryCode'
 
 function initSPN () {
   /* eslint-disable no-new */
-
   new SPNInput().init()
+
   /* eslint-disable no-new */
   new ITICountryCode().syncWithSPN()
 }

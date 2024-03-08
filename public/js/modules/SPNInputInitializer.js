@@ -5,6 +5,7 @@
  */
 
 import { IntlTelInputInitializer } from './ITIInitializer'
+import { SPNValidation } from './SPNValidation'
 import $ from 'jquery'
 
 /**
@@ -12,17 +13,23 @@ import $ from 'jquery'
  */
 class SPNInput {
   /**
-   * Initialize SPNInput instance and listen to the 'render:view' event.
+   * Initialize SPNInput instance and listen to the events.
    */
   init () {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
+    this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputValidationOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
-    nfRadio.channel( 'nfMP' ).on( 'change:part', this.initInputOnChangePage)
-    this._listenTo( Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic )
+    nfRadio.channel('nfMP').on('change:part', this.initInputOnChangePage)
+    this._listenTo(Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic)
+    this._listenTo(Backbone.Radio.channel('submit'), 'validate:field', this.ITIValidationOnFormSubmit)
   }
 
-  initInputOnConditionalLogic(fieldModel) {
-    if ( 'visible' in fieldModel.changed && fieldModel.changed.visible === true){
+  /**
+   * Initialize input when page was changed (multistep)
+   * @param {Backbone.Model} model - The model whose view has just been rendered.
+   */
+  initInputOnConditionalLogic (fieldModel) {
+    if ('visible' in fieldModel.changed && fieldModel.changed.visible === true) {
       const parentElementId = '#nf-form-' + fieldModel.attributes.formID + '-cont'
 
       // Initialize intlTelInput on the parent element
@@ -31,6 +38,10 @@ class SPNInput {
     }
   }
 
+  /**
+   * Initialize input when page was changed (multistep)
+   * @param {Backbone.Model} model - The model whose view has just been rendered.
+   */
   initInputOnChangePage (model) {
     const parentElementId = '#nf-form-' + model.formModel.id + '-cont'
 
@@ -50,7 +61,27 @@ class SPNInput {
     // Initialize intlTelInput on the parent element
     /* eslint-disable no-new */
     new IntlTelInputInitializer(parentElementId).init()
-    
+  }
+
+  /**
+   * Initialize input validation when form is loaded.
+   * @param {Backbone.Model} model - The model whose view has just been rendered.
+   */
+  initInputValidationOnFormLoad (model) {
+    // Get the parent element of the model's view
+    const $input = $(model.el).find('.spn-container input[type="tel"]')
+
+    // Init input filter on keyboard
+    SPNValidation.initInputFilter($input)
+  }
+
+  /**
+   * International Telephone Input validation on form submits
+   *
+   * @param {Backbone.Model} model - Ninja Forms Model.
+   */
+  ITIValidationOnFormSubmit (model) {
+    SPNValidation.ITIValidation(model)
   }
 
   /**
