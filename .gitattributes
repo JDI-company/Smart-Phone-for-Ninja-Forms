@@ -1,0 +1,17 @@
+# GitHub
+.github/ export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+
+# Project source
+package.json export-ignore
+gulpfile.js export-ignore
+README.MD export-ignore
+## Admin
+admin/js/ export-ignore
+## Public
+public/js/ export-ignore
+public/scss/ export-ignore
+
+# Others
+.wordpress-version-checker.json export-ignore
