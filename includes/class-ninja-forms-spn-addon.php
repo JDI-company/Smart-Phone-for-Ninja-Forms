@@ -238,8 +238,11 @@ class Ninja_Forms_Spn_Addon {
 
 	public function check_ninja_form_deactivation() {
 		if ( strpos( $_SERVER['REQUEST_URI'], '/wp-admin/plugins.php?action=deactivate&plugin=ninja-forms%2Fninja-forms.php' ) !== false ) {
-			deactivate_plugins( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
+			$this->loader->add_action( 'admin_init', $this, 'deactivate_itself' );
 		}
 	}
 
+	public function deactivate_itself() {
+		deactivate_plugins( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
+	}
 }
