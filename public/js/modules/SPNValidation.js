@@ -50,53 +50,33 @@ class SPNValidation {
     const ITI = window.intlTelInputGlobals.getInstance($input[0])
 
     // Define an error map for different validation errors ['Invalid number', 'Invalid country code', 'Too short', 'Too long', 'Invalid number']
+    // TODO: Move error map to Ninja Forms UI Editor
     const errorMap = ['Invalid number', 'Invalid number', 'Invalid number', 'Invalid number', 'Invalid number']
-    const errorArea = $('.spn-container .nf-error-custom-field-error')
     const validationType = $input.attr('data-validation-type')
-    const num = ITI.getNumber()
-    let val
+    let isError
 
     // Perform validation based on the type of validation
     if (validationType === 'precise') {
-      val = ITI.isValidNumber()
+      isError = !ITI.isValidNumber()
     } else {
-      val = ITI.isPossibleNumber()
+      isError = !ITI.isPossibleNumber()
     }
 
-    const ariaRequiredValue = $input.attr('aria-required')
+    function removeError () {
+      Backbone.Radio.channel('fields').request('remove:error', model.get('id'), 'spn-field-error')
+    }
 
-    // Check if the field is required
-    if (ariaRequiredValue === true) {
-      if (val) {
-        // Remove Error from Model
-        Backbone.Radio.channel('fields').request('remove:error', model.get('id'), 'custom-field-error')
+    if (isError) {
+      // Add Error to Model
+      const errorCode = ITI.getValidationError()
+      const errorText = errorMap[errorCode]
 
-        errorArea.text('')
-      } else {
-        // Add Error to Model
-        const errorCode = ITI.getValidationError()
-        const errorText = errorMap[errorCode]
+      Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'spn-field-error', errorText)
 
-        Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'custom-field-error', errorText)
-
-        errorArea.html('errorText')
-      }
+      $input.one('change', removeError)
     } else {
-      // If the field is not required
-      if (val || num === '') {
-        // Remove Error from Model
-        Backbone.Radio.channel('fields').request('remove:error', model.get('id'), 'custom-field-error')
-
-        errorArea.text('')
-      } else {
-        // Add Error to Model
-        const errorCode = ITI.getValidationError()
-        const errorText = errorMap[errorCode]
-
-        Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'custom-field-error', '')
-
-        errorArea.html(errorText)
-      }
+      // Remove Error from Model
+      removeError()
     }
   }
 }
