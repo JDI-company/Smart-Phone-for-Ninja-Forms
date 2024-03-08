@@ -5,10 +5,10 @@
  * @since 1.2.0
  */
 
-import { codesISO2European } from '../utils'
+import { codesISO2European } from '../utils.js'
 import $ from 'jquery'
 import intlTelInput from 'intl-tel-input'
-import intlTelInputUtils from 'intl-tel-input/build/js/utils'
+import intlTelInputUtils from 'intl-tel-input/build/js/utils.js'
 
 /**
  * Class to initialize International Telephone Input

@@ -4,10 +4,10 @@
  * @class SyncCountriesChoice
  */
 
-import { FieldOnlyCountries } from './Fields/FieldOnlyCountries'
-import { FieldPrefferedCountries } from './Fields/FieldPrefferedCountries'
-import { FieldExcludeCountries } from './Fields/FieldExcludeCountries'
-import { codesISO2European, codesISO2 } from '../utils'
+import { FieldOnlyCountries } from './Fields/FieldOnlyCountries.js'
+import { FieldPrefferedCountries } from './Fields/FieldPrefferedCountries.js'
+import { FieldExcludeCountries } from './Fields/FieldExcludeCountries.js'
+import { codesISO2European, codesISO2 } from '../utils.js'
 
 const $ = jQuery
 

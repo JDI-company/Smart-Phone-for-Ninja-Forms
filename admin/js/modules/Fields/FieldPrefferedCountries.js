@@ -5,7 +5,7 @@
  * @extends AdminField
  */
 
-import { AdminField } from '../Abstract/AdminField'
+import { AdminField } from '../Abstract/AdminField.js'
 
 const $ = jQuery
 

@@ -5,7 +5,7 @@
  * @extends AdminField
  */
 
-import { AdminField } from '../Abstract/AdminField'
+import { AdminField } from '../Abstract/AdminField.js'
 
 export class FieldOnlyCountries extends AdminField {
   /**

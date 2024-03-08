@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "gulp": "gulp"
   },
@@ -22,5 +23,8 @@
     "jquery": "^3.7.0",
     "mutation-observer": "^1.0.3",
     "sass": "^1.66.1"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

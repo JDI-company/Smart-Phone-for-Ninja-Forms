@@ -4,8 +4,8 @@
  * @since 1.2.0
  */
 
-import { IntlTelInputInitializer } from './ITIInitializer'
-import { SPNValidation } from './SPNValidation'
+import { IntlTelInputInitializer } from './ITIInitializer.js'
+import { SPNValidation } from './SPNValidation.js'
 import $ from 'jquery'
 
 /**

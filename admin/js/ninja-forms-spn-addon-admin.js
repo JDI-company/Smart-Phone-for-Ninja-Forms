@@ -4,7 +4,7 @@
  * @since 1.0.0
  */
 
-import { SyncCountriesChoice } from './modules/SyncCountriesChoice'
+import { SyncCountriesChoice } from './modules/SyncCountriesChoice.js'
 
 /* eslint no-extend-native: ["error", { "exceptions": ["Array"] }] */
 Array.prototype.remove = function (value) {
