@@ -57,9 +57,9 @@ class SPNValidation {
 
     // Perform validation based on the type of validation
     if (validationType === 'precise') {
-      isError = !ITI.isValidNumber()
+      isError = !ITI.isValidNumberPrecise()
     } else {
-      isError = !ITI.isPossibleNumber()
+      isError = !ITI.isValidNumber()
     }
 
     function removeError () {
