@@ -4,46 +4,45 @@ Donate link: https://jdi.company
 Tags: Smart Phone Addon, Ninja Forms, SPN, intlTelInput, International Telephone Input
 Requires at least: 6.0
 Tested up to: 6.4.3
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 7.0
 
-This plugin is an addon to the Ninja Forms plugin. It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
+This addon for the Ninja Forms plugin adds a flag dropdown to any input, displays a relevant placeholder and provides formatting/validation methods.
 
 == Description ==
 
-It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
+Plugin for entering and validating international telephone numbers. It adds a (searchable) country dropdown to any input, detects the user's country, displays a relevant placeholder number, formats the number as you type, and provides comprehensive validation methods.
 
-The Smart Phone is an addon to the Ninja Forms plugin. We use third part integration called <a href="https://github.com/jackocnr/intl-tel-input">intlTelInput</a>.
+The Smart Phone Addon for Ninja Forms uses third part integration called <a href="https://github.com/jackocnr/intl-tel-input">intlTelInput</a>.
 
-It's free absolutely.
+For the best experience, including addressing any issues or finding previous versions, we highly recommend visiting our [GitHub Releases](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/releases) page.
+There, you can easily browse and download any version you require.
 
-== GitHub ==
-If you have any problems or you want to downgrade the version, we recommend use GitHub.
-Just change branch and download what you need.
-<a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms" target="_blank">Smart Phone for Ninja Forms on GitHub</a>
+This plugin is completely free.
 
 == Installation ==
 
 This section describes how to install the plugin and get it working.
 
-1. Upload `nf-smart-phone-addon` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Look for Smart Phone in the Ninja Forms Dashboard
+1. Install using the WordPress built-in Plugin installer, or Extract the zip file and drop the contents in the wp-content/plugins/ directory of your WordPress installation.
+2. Activate ‘Ninja Forms‘ plugin through the ‘Plugins’ menu in WordPress.
+3. Activate ‘Smart Phone Addon for Ninja Forms‘ plugin through the ‘Plugins’ menu in WordPress.
+4. Go to Ninja Forms > Add New.
+5. Press the ‘Add new field‘ button.
+6. Select ‘Smart Phone‘ field.
+7. Change the settings in the Restrictions section to suit your needs (play with [Storybook](https://intl-tel-input.com/storybook/?path=/docs/intltelinput--vanilla)).
 
 == Frequently Asked Questions ==
 
-= Is it paid? =
+= Do I need to pay? =
 
-No, it's free absolutely.
-If you want to support us, see donate section.
+No. This plugin is completely free.
 
-= It doesn't work or my site was broken =
+= Having trouble or is your site not working correctly after activating our plugin? =
 
-If your site was broken after activation our plugin,
-please, create issue here: https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues
-or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jdi.company</a>
+Please report the issue on our [GitHub](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues) or feel free to reach out directly via email at <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jdi.company</a>
 
 = Compatibility with Ninja Forms addons =
 - Ninja Forms:⠀⠀⠀⠀⠀⠀⠀OK | v3.8.0
@@ -59,6 +58,9 @@ or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jd
 4. Screenshot 4. Some options that exist in the 'Restrictions' section of the field.
 
 == Changelog ==
+= 1.3.1 =
+#### What's Changed
+- fix: Separate dial code is renamed by intltelinput by @yaroslav-borodii in [#39](https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/pull/39)
 
 = 1.3.0 =
 #### What's Changed
@@ -130,6 +132,8 @@ or write to us <a href="mailto:yaroslav.borodii@jdi.company">yaroslav.borodii@jd
 * Init Ninja Forms Smart Phone Addon
 
 == Upgrade Notice ==
+= 1.3.1 =
+- If you use a *separate dial code* in your forms, please save the form to update the form settings
 
 = 1.1.0 =
 NOTE:<br>if you have used custom code to add a country code to your submissions in WordPress, you can remove it.
