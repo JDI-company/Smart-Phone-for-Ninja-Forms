@@ -24,8 +24,8 @@ Wordpress plugin for entering and validating international telephone numbers bas
 <img width="600" alt="IP Lookup" src="https://user-images.githubusercontent.com/46939084/204006934-5ac1d6df-848f-436d-82ac-dd0e62f67b03.png">
 
 Change default country depends on user IP
-* **Separate Dial Code**
-<img width="600" alt="Separate Dial Code" src="https://user-images.githubusercontent.com/46939084/204007378-50a3db49-4f07-4ab4-91f4-5c42fd2f2c73.png">
+* **Show Selected Dial Code**
+<img width="600" alt="Show Selected Dial Code" src="https://user-images.githubusercontent.com/46939084/204007378-50a3db49-4f07-4ab4-91f4-5c42fd2f2c73.png">
 <img src="https://camo.githubusercontent.com/200f3411c2f34ad772b7492a80b6a25297ad9d3ce1235c07238dbb405834e31e/68747470733a2f2f7261772e6769746875622e636f6d2f6a61636b6f636e722f696e746c2d74656c2d696e7075742f6d61737465722f73637265656e73686f74732f73657061726174654469616c436f64652e706e67" width="257px" height="46px" data-canonical-src="https://raw.github.com/jackocnr/intl-tel-input/master/screenshots/separateDialCode.png" >
 Display the country dial code next to the selected flag so it's not part of the typed number. Note that this will disable National Mode because technically we are dealing with international numbers, but with the dial code separated.
 

@@ -68,19 +68,19 @@ class SPN_Field extends NF_Fields_Phone {
 		);
 
 		/**
-		 * Add toggle Separate Dial Code
+		 * Add toggle Show Selected Dial Code
 		 * Display the country dial code next to the selected flag so it's not part of the typed number.
 		 * Note that this will disable nationalMode because technically we are dealing with international numbers, but with the dial code separated.
 		 *
 		 * @since    1.0.0
 		 */
-		$this->_settings['separate_dial_code'] = array(
-			'name'  => 'separate_dial_code',
+		$this->_settings['show_selected_dial_code'] = array(
+			'name'  => 'show_selected_dial_code',
 			'type'  => 'toggle',
-			'label' => esc_html__( 'Separate Dial Code', 'ninja-forms-spn-addon' ),
+			'label' => esc_html__( 'Show Selected Dial Code', 'ninja-forms-spn-addon' ),
 			'width' => 'full',
 			'group' => 'restrictions',
-			'help'  => esc_html__( 'Display the country dial code next to the selected flag so it\'s not part of the typed number. Note that this will disable nationalMode because technically we are dealing with international numbers, but with the dial code separated.', 'ninja-forms-spn-addon' ),
+			'help'  => wp_kses_post( __( 'Display the country dial code next to the selected flag. Play with this option on <a href="https://intl-tel-input.com/storybook/?path=/docs/intltelinput--showselecteddialcode" target="_blank" rel="noopener">Storybook</a> (using the React component).', 'ninja-forms-spn-addon' ) ),
 			'value' => false,
 		);
 

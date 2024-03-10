@@ -57,7 +57,7 @@ class IntlTelInputInitializer {
     const allowDropdown = Boolean($input.data('allow-dropdown'))
     const nationalMode = Boolean($input.data('national-mode'))
     const autoHideDialCode = Boolean($input.data('auto-hide-dial-code'))
-    const separateDialCode = Boolean($input.data('separate-dial-code'))
+    const showSelectedDialCode = Boolean($input.data('show-selected-dial-code'))
     const formatOnDisplay = Boolean($input.data('format-on-display'))
 
     return {
@@ -69,7 +69,7 @@ class IntlTelInputInitializer {
       autoHideDialCode,
       excludeCountries,
       allowIpLookUp,
-      separateDialCode,
+      showSelectedDialCode,
       formatOnDisplay
     }
   }
@@ -89,7 +89,7 @@ class IntlTelInputInitializer {
       autoHideDialCode: dataAttributes.autoHideDialCode,
       excludeCountries: dataAttributes.excludeCountries,
       geoIpLookup: dataAttributes.allowIpLookUp,
-      separateDialCode: dataAttributes.separateDialCode,
+      showSelectedDialCode: dataAttributes.showSelectedDialCode,
       formatOnDisplay: dataAttributes.formatOnDisplay,
       utilsScript: intlTelInputUtils
     })
