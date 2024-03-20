@@ -66,6 +66,30 @@ class ITICountryCode {
   }
 
   /**
+ * Method to set country code based on user's IP address
+ * @param {string} userIP - User's IP address
+ */
+  setCountryCodeByIP (userIP) {
+  // Log user IP address to the console
+    console.log('User IP Address:', userIP)
+
+    // Make a request to a service that maps IP to country code
+    fetch(`https://ipapi.co/${userIP}/json`)
+      .then(response => response.json())
+      .then(data => {
+        const countryCode = data.country_calling_code
+
+        const $phoneInput = jQuery('.iti__tel-input')
+
+        // Update the country code in the input field
+        $phoneInput.val(`${countryCode}`)
+      })
+      .catch(error => {
+        console.error('Error setting country code:', error)
+      })
+  }
+
+  /**
    * Method to start listening to events.
    * It uses to prevent extending Marionette
    *
