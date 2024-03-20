@@ -67,25 +67,42 @@ class ITICountryCode {
 
   /**
  * Method to set country code based on user's IP address
- * @param {string} userIP - User's IP address
  */
-  setCountryCodeByIP (userIP) {
-  // Log user IP address to the console
-    console.log('User IP Address:', userIP)
 
-    // Make a request to a service that maps IP to country code
-    fetch(`https://ipapi.co/${userIP}/json`)
-      .then(response => response.json())
-      .then(data => {
-        const countryCode = data.country_calling_code
+  setCountryCodeByIP () {
+    fetch('https://api.ipify.org/')
+      .then(response => response.text())
+      .then(userIP => {
+        fetch(`https://ipapi.co/${userIP}/json`)
+          .then(response => response.json())
+          .then(data => {
+            const countryCode = data.country_calling_code
+            const $phoneInput = jQuery('.iti__tel-input')
 
-        const $phoneInput = jQuery('.iti__tel-input')
+            $phoneInput.val(`${countryCode}`)
+            const allCountries = [...window.intlTelInputGlobals.getCountryData()]
+            let dialCode = ''
+            let iso2Code = ''
 
-        // Update the country code in the input field
-        $phoneInput.val(`${countryCode}`)
+            allCountries.forEach(country => {
+              const countryCodeWithoutPlus = countryCode.replace('+', '')
+
+              if (country.dialCode === countryCodeWithoutPlus) {
+                dialCode = country.dialCode
+                iso2Code = country.iso2
+              }
+            })
+
+            const inputElement = document.querySelector('.iti__tel-input')
+            const itiInstance = window.intlTelInputGlobals.getInstance(inputElement)
+            itiInstance.setCountry(iso2Code)
+          })
+          .catch(error => {
+            console.error('Error setting country code:', error)
+          })
       })
       .catch(error => {
-        console.error('Error setting country code:', error)
+        console.error('Error fetching user IP:', error)
       })
   }
 
