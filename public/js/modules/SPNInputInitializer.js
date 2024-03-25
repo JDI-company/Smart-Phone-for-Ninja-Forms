@@ -17,6 +17,7 @@ class SPNInput {
    */
   init () {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
+    this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initAndUseIpLookUp)
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputValidationOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
     nfRadio.channel('nfMP').on('change:part', this.initInputOnChangePage)
@@ -36,6 +37,26 @@ class SPNInput {
       /* eslint-disable no-new */
       new IntlTelInputInitializer(parentElementId).init()
     }
+  }
+  /**
+   * Initialize IP Lookup when form is loaded.
+   * @param {Backbone.Model} model - The model whose view has just been rendered.
+   */
+
+  initAndUseIpLookUp (model) {
+    const itiInitializer = new IntlTelInputInitializer()
+
+    const $input = $(model.el).find('.spn-container input[type="tel"]')
+    const data = itiInitializer.getIpLookUp($input)
+
+    data(function (country) {
+      console.log(country)
+      const inputElement = document.querySelector('.iti__tel-input')
+      const itiInstance = window.intlTelInputGlobals.getInstance(inputElement)
+      itiInstance.setCountry(country)
+    }, function () {
+      console.error('Failed to retrieve country information')
+    })
   }
 
   /**
