@@ -13,9 +13,7 @@ function initSPN () {
   new SPNInput().init()
 
   /* eslint-disable no-new */
-  const itiCountryCode = new ITICountryCode()
-  itiCountryCode.syncWithSPN()
-  itiCountryCode.setCountryCodeByIP()
+  new ITICountryCode().syncWithSPN()
 }
 
 // Initialize SPN functionality

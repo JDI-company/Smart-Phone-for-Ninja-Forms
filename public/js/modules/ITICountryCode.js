@@ -66,47 +66,6 @@ class ITICountryCode {
   }
 
   /**
- * Method to set country code based on user's IP address
- */
-
-  setCountryCodeByIP () {
-    fetch('https://api.ipify.org/')
-      .then(response => response.text())
-      .then(userIP => {
-        fetch(`https://ipapi.co/${userIP}/json`)
-          .then(response => response.json())
-          .then(data => {
-            const countryCode = data.country_calling_code
-            const $phoneInput = jQuery('.iti__tel-input')
-
-            $phoneInput.val(`${countryCode}`)
-            const allCountries = [...window.intlTelInputGlobals.getCountryData()]
-            let dialCode = ''
-            let iso2Code = ''
-
-            allCountries.forEach(country => {
-              const countryCodeWithoutPlus = countryCode.replace('+', '')
-
-              if (country.dialCode === countryCodeWithoutPlus) {
-                dialCode = country.dialCode
-                iso2Code = country.iso2
-              }
-            })
-
-            const inputElement = document.querySelector('.iti__tel-input')
-            const itiInstance = window.intlTelInputGlobals.getInstance(inputElement)
-            itiInstance.setCountry(iso2Code)
-          })
-          .catch(error => {
-            console.error('Error setting country code:', error)
-          })
-      })
-      .catch(error => {
-        console.error('Error fetching user IP:', error)
-      })
-  }
-
-  /**
    * Method to start listening to events.
    * It uses to prevent extending Marionette
    *
