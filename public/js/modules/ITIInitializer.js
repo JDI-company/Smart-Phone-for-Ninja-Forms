@@ -154,7 +154,9 @@ class IntlTelInputInitializer {
       }
       defaultCountry = 'auto'
     } else {
-      allowIpLookUp = null
+      allowIpLookUp = function () {
+        return null
+      }
     }
 
     return allowIpLookUp

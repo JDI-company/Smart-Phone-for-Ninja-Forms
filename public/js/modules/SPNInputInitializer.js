@@ -38,11 +38,11 @@ class SPNInput {
       new IntlTelInputInitializer(parentElementId).init()
     }
   }
+
   /**
    * Initialize IP Lookup when form is loaded.
    * @param {Backbone.Model} model - The model whose view has just been rendered.
    */
-
   initAndUseIpLookUp (model) {
     const itiInitializer = new IntlTelInputInitializer()
 
@@ -50,7 +50,6 @@ class SPNInput {
     const data = itiInitializer.getIpLookUp($input)
 
     data(function (country) {
-      console.log(country)
       const inputElement = document.querySelector('.iti__tel-input')
       const itiInstance = window.intlTelInputGlobals.getInstance(inputElement)
       itiInstance.setCountry(country)
