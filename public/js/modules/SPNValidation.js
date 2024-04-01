@@ -18,6 +18,8 @@ class SPNValidation {
       return
     }
 
+    jQuery('.iti__a11y-text').remove()
+
     // Attach an 'input' event listener on SPN $input inside the NF form
     $input.on('input', function () {
       // Get the current value of the input field
