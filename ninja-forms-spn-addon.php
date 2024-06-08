@@ -23,6 +23,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       ninja-forms-spn-addon
  * Domain Path:       /languages
+ * Requires Plugins:  ninja-forms
  */
 
 /*
