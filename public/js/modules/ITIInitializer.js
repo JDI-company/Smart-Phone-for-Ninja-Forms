@@ -146,8 +146,20 @@ class IntlTelInputInitializer {
     let allowIpLookUp = Boolean($input.data('allow-ip-lookup'))
 
     if (allowIpLookUp) {
+      const ipLookupToken = $input.data('ip-lookup-api-key')
+
       allowIpLookUp = function (success, failure) {
-        $.get('https://ipinfo.io', function () {}, 'jsonp').always(function (resp) {
+        let URL = 'https://ipinfo.io';
+
+        const query = {
+          token: ipLookupToken ?? ''
+        }
+
+        if(query) {
+          URL += '?' + new URLSearchParams(query).toString()
+        }
+
+        $.get(URL, function () {}, 'jsonp').always(function (resp) {
           const countryCode = (resp && resp.country) ? resp.country : defaultCountry
           success(countryCode)
         })

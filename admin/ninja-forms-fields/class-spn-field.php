@@ -68,6 +68,25 @@ class SPN_Field extends NF_Fields_Phone {
 		);
 
 		/**
+		 * Add API key from ipinfo.io for IP lookup
+		 * Automatically select the user's current country using an IP lookup.
+		 *
+		 * @since    1.4.0
+		 */
+		$this->_settings['ip_lookup_api_key'] = array(
+			'name'  => 'ip_lookup_api_key',
+			'type'  => 'textbox',
+			'label' => esc_html__( 'IP Lookup API Key', 'ninja-forms-spn-addon' ),
+			'width' => 'full',
+			'group' => 'restrictions',
+			'help'  => wp_kses_post( __( '<a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/wiki/Increase-limit-of-the-IP-Lookup" target="_blank" rel="noopener">Increase limit of the IP Lookup</a>', 'ninja-forms-spn-addon' ) ),
+			'value' => '',
+			'deps' => array(
+				'allow_ip_lookup' => 1,
+			),
+		);
+
+		/**
 		 * Add toggle Show Selected Dial Code
 		 * Display the country dial code next to the selected flag so it's not part of the typed number.
 		 * Note that this will disable nationalMode because technically we are dealing with international numbers, but with the dial code separated.

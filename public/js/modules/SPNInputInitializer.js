@@ -21,6 +21,7 @@ class SPNInput {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputValidationOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
     nfRadio.channel('nfMP').on('change:part', this.initInputOnChangePage)
+    nfRadio.channel('nfMP').on('change:part', this.initAndUseIpLookUp)
     this._listenTo(Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic)
     this._listenTo(Backbone.Radio.channel('submit'), 'validate:field', this.ITIValidationOnFormSubmit)
   }
@@ -46,7 +47,17 @@ class SPNInput {
   initAndUseIpLookUp (model) {
     const itiInitializer = new IntlTelInputInitializer()
 
-    const $input = $(model.el).find('.spn-container input[type="tel"]')
+    let $input = $(model.el).find('.spn-container input[type="tel"]')
+
+    if($input.length <= 0 && model.hasOwnProperty('formModel')) {
+      // For Ninja Forms Multi Parts
+      $input = $('#nf-form-' + model.formModel.id + '-cont').find('.spn-container input[type="tel"]');
+    }
+
+    if($input.length <= 0) {
+      return;
+    }
+
     const data = itiInitializer.getIpLookUp($input)
 
     data(function (country) {
