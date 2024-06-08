@@ -30,12 +30,21 @@ class Ninja_Forms_Spn_Addon_Activator {
 	 */
 	public static function activate() {
 		if ( version_compare( PHP_VERSION, '7.1', '<=' ) ) {
-			wp_die( esc_html__( 'This plugin requires PHP Version 7.1 or greater. Sorry about that.', 'ninja-forms-spn-addon' ) );
+			wp_die( esc_html__( 'This plugin requires PHP Version 7.1 or greater.', 'ninja-forms-spn-addon' ) );
 		}
 
+		self::maybe_activation_is_wrong();
+	}
+
+	/**
+	 * Check if Ninja Forms is installed and activated
+	 *
+	 * @deprecated Since 2.0 use Introducing Plugin Dependencies in WordPress 6.5
+	 * @see https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/issues/51
+	 */
+	public static function maybe_activation_is_wrong() {
 		if ( ! class_exists( 'Ninja_Forms' ) ) {
 			wp_die( esc_html__( 'Ninja Forms SPN Addon was not activated. Ninja Forms should be installed and activated.', 'ninja-forms-spn-addon' ) );
 		}
 	}
-
 }
