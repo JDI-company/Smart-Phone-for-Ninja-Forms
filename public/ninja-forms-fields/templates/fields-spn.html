@@ -35,6 +35,10 @@
 
         <# if( data.allow_ip_lookup ){ #>
             data-allow-ip-lookup="{{{ data.allow_ip_lookup }}}"
+            
+            <# if( data.ip_lookup_api_key ){ #>
+                data-ip-lookup-api-key="{{{ data.ip_lookup_api_key }}}"
+            <# } #>
         <# } #>
 
         <# if( data.show_selected_dial_code ){ #>

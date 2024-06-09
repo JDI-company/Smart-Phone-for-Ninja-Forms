@@ -51,8 +51,7 @@ function compileAdminJS () {
             }
           }
         }
-      }),
-      webpack
+      }, webpack),
     )
     .pipe(Gulp.dest('./dist/admin/'))
 }
@@ -91,8 +90,7 @@ function compilePublicJS () {
             }
           }
         }
-      }),
-      webpack
+      }, webpack),
     )
     .pipe(Gulp.dest('./dist/public/'))
 }

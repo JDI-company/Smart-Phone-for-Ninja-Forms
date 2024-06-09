@@ -17,9 +17,11 @@ class SPNInput {
    */
   init () {
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputOnFormLoad)
+    this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initAndUseIpLookUp)
     this._listenTo(Backbone.Radio.channel('form'), 'render:view', this.initInputValidationOnFormLoad)
     this._listenTo(Backbone.Radio.channel('forms'), 'submit:response', this._initInputOnFormSubmit)
     nfRadio.channel('nfMP').on('change:part', this.initInputOnChangePage)
+    nfRadio.channel('nfMP').on('change:part', this.initAndUseIpLookUp)
     this._listenTo(Backbone.Radio.channel('fields'), 'change:model', this.initInputOnConditionalLogic)
     this._listenTo(Backbone.Radio.channel('submit'), 'validate:field', this.ITIValidationOnFormSubmit)
   }
@@ -36,6 +38,35 @@ class SPNInput {
       /* eslint-disable no-new */
       new IntlTelInputInitializer(parentElementId).init()
     }
+  }
+
+  /**
+   * Initialize IP Lookup when form is loaded.
+   * @param {Backbone.Model} model - The model whose view has just been rendered.
+   */
+  initAndUseIpLookUp (model) {
+    const itiInitializer = new IntlTelInputInitializer()
+
+    let $input = $(model.el).find('.spn-container input[type="tel"]')
+
+    if($input.length <= 0 && model.hasOwnProperty('formModel')) {
+      // For Ninja Forms Multi Parts
+      $input = $('#nf-form-' + model.formModel.id + '-cont').find('.spn-container input[type="tel"]');
+    }
+
+    if($input.length <= 0) {
+      return;
+    }
+
+    const data = itiInitializer.getIpLookUp($input)
+
+    data(function (country) {
+      const inputElement = document.querySelector('.iti__tel-input')
+      const itiInstance = window.intlTelInputGlobals.getInstance(inputElement)
+      itiInstance.setCountry(country)
+    }, function () {
+      console.error('Failed to retrieve country information')
+    })
   }
 
   /**
