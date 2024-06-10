@@ -7,6 +7,7 @@
 import { IntlTelInputInitializer } from './ITIInitializer.js'
 import { SPNValidation } from './SPNValidation.js'
 import $ from 'jquery'
+import intlTelInput from 'intl-tel-input/intlTelInputWithUtils'
 
 /**
  * Class representing SPNInput functionality.
@@ -62,7 +63,8 @@ class SPNInput {
 
     data(function (country) {
       const inputElement = document.querySelector('.iti__tel-input')
-      const itiInstance = window.intlTelInputGlobals.getInstance(inputElement)
+      const itiInstance = intlTelInput.getInstance(inputElement)
+
       itiInstance.setCountry(country)
     }, function () {
       console.error('Failed to retrieve country information')

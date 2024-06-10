@@ -51,7 +51,6 @@ class Ninja_Forms_Spn_Addon_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 	/**
@@ -73,8 +72,7 @@ class Ninja_Forms_Spn_Addon_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/ninja-forms-spn-addon-admin.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __DIR__ ) . 'dist/admin/ninja-forms-spn-addon-admin.min.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -96,9 +94,8 @@ class Ninja_Forms_Spn_Addon_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name . '-vendors', plugin_dir_url( dirname( __FILE__ ) ) . 'dist/admin/spn-back-vendors.min.js', array(), $this->version, true );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( dirname( __FILE__ ) ) . 'dist/admin/spn-back-main.min.js', array( $this->plugin_name . '-vendors' ), $this->version, true );
-
+		wp_enqueue_script( $this->plugin_name . '-vendors', plugin_dir_url( __DIR__ ) . 'dist/admin/spn-back-vendors.min.js', array(), $this->version, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __DIR__ ) . 'dist/admin/spn-back-main.min.js', array( $this->plugin_name . '-vendors' ), $this->version, true );
 	}
 
 	/**
@@ -108,12 +105,10 @@ class Ninja_Forms_Spn_Addon_Admin {
 	 */
 	public function register_fields( $actions ) {
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/ninja-forms-fields/class-spn-field.php';
+		require_once plugin_dir_path( __DIR__ ) . 'admin/ninja-forms-fields/class-spn-field.php';
 
 		$actions['spn'] = new SPN_Field();
 
 		return $actions;
-
 	}
-
 }

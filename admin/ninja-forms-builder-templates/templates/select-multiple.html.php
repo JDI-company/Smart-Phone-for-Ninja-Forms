@@ -1,6 +1,6 @@
 <script id="tmpl-nf-edit-setting-select-multiple" type="text/template">
     <label for="{{{ data.name }}}" class="nf-select-multiple">{{{ data.label }}} {{{ data.renderTooltip() }}}
-        <select id="{{{ data.name }}}" class="setting" multiple>
+        <select id="{{{ data.name }}}" class="setting select-multiple" multiple>
             <#
             _.each( data.options, function( option ) {
                 #>

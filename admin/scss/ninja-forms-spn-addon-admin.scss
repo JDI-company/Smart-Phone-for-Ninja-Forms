@@ -1,0 +1,36 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.ninja-forms-app #wpcontent .nf-field-settings select[multiple],
+.ninja-forms-app #wpcontent .nf-field-settings .sortable-list {
+  display: block;
+  margin-top: 7px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.ninja-forms-app #wpcontent .nf-field-settings .sortable-list {
+  background: #fff;
+  height: auto;
+  max-height: 128px;
+  overflow: auto;
+  line-height: normal;
+  padding: 0 8px;
+  margin-inline: 1px;
+  
+  li {
+    cursor: grab;
+    transition: 300ms ease-out;
+    text-transform: none;
+    font-size: 14px;
+    line-height: normal;
+    margin: 0;
+
+    &:hover {
+      background: #cecece;
+    }
+  }
+}
+
