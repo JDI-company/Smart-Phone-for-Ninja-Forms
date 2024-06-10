@@ -1,15 +1,18 @@
 /**
- * Field Preffered Countries Class
+ * Field Order Country
  *
- * @class FieldPrefferedCountries
+ * @class FieldCountryOrder
  * @extends AdminField
  */
 
 import { AdminField } from '../Abstract/AdminField.js'
+import Sortable, { AutoScroll } from 'sortablejs/modular/sortable.core.esm.js';
+
+Sortable.mount(new AutoScroll());
 
 const $ = jQuery
 
-export class FieldPrefferedCountries extends AdminField {
+export class FieldCountryOrder extends AdminField {
   /**
    * Constructor
    *
@@ -19,7 +22,8 @@ export class FieldPrefferedCountries extends AdminField {
     super(fieldSelector)
 
     this.fieldSelector = fieldSelector
-    this.$field = this.findField()
+
+    this.initSortable()
   }
 
   /**
@@ -30,12 +34,21 @@ export class FieldPrefferedCountries extends AdminField {
     return this.fieldSelector
   }
 
+  initSortable() {
+    this.onSettingsInit((fieldElement) => {
+      const sortable = Sortable.create(fieldElement, {
+        scroll: true,
+        forceAutoScrollFallback: true
+      })
+    })
+  }
+
   /**
    * Error Message if option inside field was not found
    *
    * @return {string}
    */
   getErrorOptionNotFound () {
-    return 'FieldPrefferedCountries: option value is not found.'
+    return 'FieldCountryOrder: option value is not found.'
   }
 }

@@ -41,12 +41,12 @@
             <# } #>
         <# } #>
 
-        <# if( data.show_selected_dial_code ){ #>
-            data-show-selected-dial-code="{{{ data.show_selected_dial_code }}}"
+        <# if( data.separate_dial_code ){ #>
+            data-show-selected-dial-code="{{{ data.separate_dial_code }}}"
         <# } #>
 
         data-default-country="{{{ data.default_country }}}"
-        data-preffered-countries="{{{ data.preffered_countries }}}"
+        data-country-order="{{{ data.country_order }}}"
         data-only-countries="{{{ data.only_countries }}}"
         data-allow-dropdown="{{{ data.allow_dropdown }}}"
         data-national-mode="{{{ data.national_mode }}}"

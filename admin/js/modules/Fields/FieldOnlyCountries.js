@@ -2,12 +2,12 @@
  * Field Only Countries Class
  *
  * @class FieldOnlyCountries
- * @extends AdminField
+ * @extends AdminSelectField
  */
 
-import { AdminField } from '../Abstract/AdminField.js'
+import { AdminSelectField } from '../Abstract/AdminSelectField.js'
 
-export class FieldOnlyCountries extends AdminField {
+export class FieldOnlyCountries extends AdminSelectField {
   /**
    * Constructor
    *
@@ -17,7 +17,6 @@ export class FieldOnlyCountries extends AdminField {
     super(fieldSelector)
 
     this.fieldSelector = fieldSelector
-    this.$field = this.findField()
   }
 
   /**

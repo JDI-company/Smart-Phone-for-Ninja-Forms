@@ -81,25 +81,28 @@ class SPN_Field extends NF_Fields_Phone {
 			'group' => 'restrictions',
 			'help'  => wp_kses_post( __( '<a href="https://github.com/JDI-company/Smart-Phone-for-Ninja-Forms/wiki/Increase-limit-of-the-IP-Lookup" target="_blank" rel="noopener">Increase limit of the IP Lookup</a>', 'ninja-forms-spn-addon' ) ),
 			'value' => '',
-			'deps' => array(
+			'deps'  => array(
 				'allow_ip_lookup' => 1,
 			),
 		);
 
 		/**
-		 * Add toggle Show Selected Dial Code
-		 * Display the country dial code next to the selected flag so it's not part of the typed number.
-		 * Note that this will disable nationalMode because technically we are dealing with international numbers, but with the dial code separated.
+		 * Add toggle Separate Dial Code
 		 *
-		 * @since    1.0.0
+		 * Display the selected country dial code next to the input, so it looks like it\'s part of the typed number, except it is uneditable.
+		 * When enabled, typing a plus in the telephone input will open the country dropdown and enter the plus in the search input instead,
+		 * to force the user to select a country from the list rather than typing their dial code in the telephone input.
+		 *
+		 * @see https://intl-tel-input.com/storybook/?path=/docs/intltelinput--separateDialCode
+		 * @since    2.0.0
 		 */
-		$this->_settings['show_selected_dial_code'] = array(
-			'name'  => 'show_selected_dial_code',
+		$this->_settings['separate_dial_code'] = array(
+			'name'  => 'separate_dial_code',
 			'type'  => 'toggle',
-			'label' => esc_html__( 'Show Selected Dial Code', 'ninja-forms-spn-addon' ),
+			'label' => esc_html__( 'Separate Dial Code', 'ninja-forms-spn-addon' ),
 			'width' => 'full',
 			'group' => 'restrictions',
-			'help'  => wp_kses_post( __( 'Display the country dial code next to the selected flag. Play with this option on <a href="https://intl-tel-input.com/storybook/?path=/docs/intltelinput--showselecteddialcode" target="_blank" rel="noopener">Storybook</a> (using the React component).', 'ninja-forms-spn-addon' ) ),
+			'help'  => wp_kses_post( __( 'Display the selected country dial code next to the input, so it looks like it\'s part of the typed number, except it is uneditable. When enabled, typing a plus in the telephone input will open the country dropdown and enter the plus in the search input instead, to force the user to select a country from the list rather than typing their dial code in the telephone input. Play with this option on <a href="https://intl-tel-input.com/storybook/?path=/docs/intltelinput--separateDialCode" target="_blank" rel="noopener">Storybook</a> (using the React component).', 'ninja-forms-spn-addon' ) ),
 			'value' => false,
 		);
 
@@ -120,18 +123,21 @@ class SPN_Field extends NF_Fields_Phone {
 		);
 
 		/**
-		 * Add multiple select Preferred Countries
+		 * Add Country Order
+		 * Specify the ordering for the country list with an array of iso2 country codes.
+		 * Any ommitted countries will appear after those specified
 		 *
-		 * @since    1.0.0
+		 * @see https://intl-tel-input.com/storybook/?path=/docs/intltelinput--countryorder
+		 * @since    2.0.0
 		 */
-		$this->_settings['preffered_countries'] = array(
-			'name'    => 'preffered_countries',
-			'type'    => 'select-multiple',
-			'label'   => esc_html__( 'Preffered Countries', 'ninja-forms-spn-addon' ),
+		$this->_settings['country_order'] = array(
+			'name'    => 'country_order',
+			'type'    => 'sortable-list',
+			'label'   => esc_html__( 'Country Order', 'ninja-forms-spn-addon' ),
 			'width'   => 'full',
 			'group'   => 'restrictions',
 			'options' => $country_selection_options,
-			'help'    => esc_html__( 'Specify the countries to appear at the top of the list.', 'ninja-forms-spn-addon' ),
+			'help'    => wp_kses_post( __( 'Specify the ordering for the country list. Any ommitted countries will appear after those specified. Play with this option on <a href="https://intl-tel-input.com/storybook/?path=/docs/intltelinput--countryorder" target="_blank" rel="noopener">Storybook</a> (using the React component).', 'ninja-forms-spn-addon' ) ),
 			'value'   => '',
 		);
 
