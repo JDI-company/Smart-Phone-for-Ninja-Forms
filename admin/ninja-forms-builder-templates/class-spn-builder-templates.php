@@ -28,7 +28,7 @@ class SPN_Builder_Templates {
 	}
 
 	/**
-	 * Add multiple select to Ninja Forms
+	 * Add additional templates support to Ninja Forms
 	 * @since 1.0.0
 	 *
 	 * @access public
@@ -36,6 +36,7 @@ class SPN_Builder_Templates {
 	public function add_templates() {
 
 		$this->require_template( 'select-multiple' );
+		$this->require_template( 'sortable-list' );
 
 	}
 

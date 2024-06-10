@@ -7,8 +7,7 @@
 
 import { codesISO2European, nfspnRemoveValue } from '../utils.js'
 import $ from 'jquery'
-import intlTelInput from 'intl-tel-input'
-import intlTelInputUtils from 'intl-tel-input/build/js/utils.js'
+import intlTelInput from 'intl-tel-input/intlTelInputWithUtils'
 
 /**
  * Class to initialize International Telephone Input
@@ -53,24 +52,24 @@ class IntlTelInputInitializer {
     const onlyCountries = this.getOnlyCountries($input)
     const excludeCountries = this.getExcludeCountries($input)
     const allowIpLookUp = this.getIpLookUp($input, onlyCountries.defaultCountry)
-    const preferredCountries = $input.data('preffered-countries').split(',')
+    const countryOrder = $input.data('country-order').split(',')
     const allowDropdown = Boolean($input.data('allow-dropdown'))
     const nationalMode = Boolean($input.data('national-mode'))
     const autoHideDialCode = Boolean($input.data('auto-hide-dial-code'))
-    const showSelectedDialCode = Boolean($input.data('show-selected-dial-code'))
+    const separateDialCode = Boolean($input.data('show-selected-dial-code'))
     const formatOnDisplay = Boolean($input.data('format-on-display'))
     const excludeCountryCodeFromSubmission = Boolean($input.data('exclude-country-code-from-submission'))
 
     return {
       onlyCountries: onlyCountries.onlyCountries,
       defaultCountry: onlyCountries.defaultCountry,
-      preferredCountries,
+      countryOrder,
       allowDropdown,
       nationalMode,
       autoHideDialCode,
       excludeCountries,
       allowIpLookUp,
-      showSelectedDialCode,
+      separateDialCode,
       formatOnDisplay,
       excludeCountryCodeFromSubmission
     }
@@ -84,16 +83,15 @@ class IntlTelInputInitializer {
   initializeIntlTelInput ($input, dataAttributes) {
     intlTelInput($input[0], {
       initialCountry: dataAttributes.defaultCountry,
-      preferredCountries: dataAttributes.preferredCountries,
+      countryOrder: dataAttributes.countryOrder,
       onlyCountries: dataAttributes.onlyCountries,
       allowDropdown: dataAttributes.allowDropdown,
       nationalMode: dataAttributes.nationalMode,
       autoHideDialCode: dataAttributes.autoHideDialCode,
       excludeCountries: dataAttributes.excludeCountries,
       geoIpLookup: dataAttributes.allowIpLookUp,
-      showSelectedDialCode: dataAttributes.showSelectedDialCode,
+      separateDialCode: dataAttributes.separateDialCode,
       formatOnDisplay: dataAttributes.formatOnDisplay,
-      utilsScript: intlTelInputUtils
     })
   }
 
@@ -105,7 +103,7 @@ class IntlTelInputInitializer {
   getOnlyCountries ($input) {
     let onlyCountries = $input.data('only-countries').split(',')
     const defaultCountry = $input.data('default-country')
-    const allCountries = [...window.intlTelInputGlobals.getCountryData()]
+    const allCountries = [...intlTelInput.getCountryData()]
     const codesISO2 = allCountries.map((country) => {
       return country.iso2
     })

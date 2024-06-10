@@ -95,7 +95,7 @@ function compilePublicJS () {
     .pipe(Gulp.dest('./dist/public/'))
 }
 
-function compileCss () {
+function compilePublicCSS () {
   return Gulp.src('./public/scss/ninja-forms-spn-addon-public.scss')
     .pipe(sassCompiler({
       outputStyle: 'compressed',
@@ -110,13 +110,29 @@ function compileCss () {
     .pipe(Gulp.dest('./dist/public/'))
 }
 
+function compileAdminCSS () {
+  return Gulp.src('./admin/scss/ninja-forms-spn-addon-admin.scss')
+    .pipe(sassCompiler({
+      outputStyle: 'compressed',
+      includePaths: [
+        './node_modules'
+      ]
+    }).on('error', sassCompiler.logError))
+    .pipe(gulpCssnano())
+    .pipe(concat('ninja-forms-spn-addon-admin.css'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(autoPrefixer('last 2 versions'))
+    .pipe(Gulp.dest('./dist/admin/'))
+}
+
 function watchFiles () {
   Gulp.watch('./admin/js/**/*.js', compileAdminJS)
   Gulp.watch('./public/js/**/*.js', compilePublicJS)
-  Gulp.watch('./public/scss/**/*.scss', compileCss)
+  Gulp.watch('./public/scss/**/*.scss', compilePublicCSS)
+  Gulp.watch('./admin/scss/**/*.scss', compileAdminCSS)
 }
 
-const build = Gulp.series(compileAdminJS, compilePublicJS, compileCss, watchFiles)
+const build = Gulp.series(compileAdminJS, compilePublicJS, compilePublicCSS, compileAdminCSS, watchFiles)
 
 // Export
-export { compileAdminJS, compilePublicJS, compileCss, watchFiles as watch, build, build as default }
+export { compileAdminJS, compilePublicJS, compilePublicCSS, compileAdminCSS, watchFiles as watch, build, build as default }

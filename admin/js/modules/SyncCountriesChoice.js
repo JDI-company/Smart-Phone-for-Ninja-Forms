@@ -5,7 +5,6 @@
  */
 
 import { FieldOnlyCountries } from './Fields/FieldOnlyCountries.js'
-import { FieldPrefferedCountries } from './Fields/FieldPrefferedCountries.js'
 import { FieldExcludeCountries } from './Fields/FieldExcludeCountries.js'
 import { codesISO2European, codesISO2, nfspnRemoveValue } from '../utils.js'
 
@@ -54,7 +53,6 @@ export class SyncCountriesChoice {
      */
     function handleSPNFieldClick (event) {
       const FieldOnly = new FieldOnlyCountries('#only_countries')
-      const FieldPreffered = new FieldPrefferedCountries('#preffered_countries')
       const FieldExclude = new FieldExcludeCountries('#exclude_countries')
 
       FieldOnly.handleOnChange((currentValue) => {
@@ -63,10 +61,6 @@ export class SyncCountriesChoice {
           // Handle Field Exclude
           FieldExclude.setFieldValue(codesISO2, false)
           FieldExclude.disableOptions(codesISO2, false)
-
-          // Handle Field Preffered
-          FieldPreffered.setFieldValue(codesISO2, false)
-          FieldPreffered.disableOptions(codesISO2, false)
 
           // Handle Field Only
           const fieldOnlyOptions = [...codesISO2] // clone array
@@ -86,21 +80,11 @@ export class SyncCountriesChoice {
           FieldExclude.setFieldValue(codesISO2, false)
           FieldExclude.disableOptions(codesISO2, true)
           FieldExclude.disableOptions(onlyCountries, false)
-
-          // Handle Field Preffered
-          FieldPreffered.setFieldValue(codesISO2, false)
-          FieldPreffered.disableOptions(codesISO2, true)
-          FieldPreffered.disableOptions(onlyCountries, false)
         } else {
           // Handle Field Exclude
           FieldExclude.setFieldValue(codesISO2, false)
           FieldExclude.disableOptions(codesISO2, true)
           FieldExclude.disableOptions(currentValue, false)
-
-          // Handle Field Preffered
-          FieldPreffered.setFieldValue(codesISO2, false)
-          FieldPreffered.disableOptions(codesISO2, true)
-          FieldPreffered.disableOptions(currentValue, false)
         }
       })
 
@@ -108,11 +92,6 @@ export class SyncCountriesChoice {
         // Concat disabled options
         const excludedOptions = FieldExclude.getOptions('unactive', 'value')
         currentValue = currentValue.concat(excludedOptions)
-
-        // Handle Field Preffered
-        FieldPreffered.setFieldValue(currentValue, false)
-        FieldPreffered.disableOptions(codesISO2, false)
-        FieldPreffered.disableOptions(currentValue, true)
       })
     }
   }
