@@ -12,4 +12,8 @@ const codesISO2European = [
   'si', 'es', 'se', 'ch', 'ua', 'gb'
 ]
 
-export { codesISO2European }
+function nfspnRemoveValue (obj, value) {
+  return obj.filter(function (element) { return element !== value })
+}
+
+export { codesISO2European, nfspnRemoveValue }

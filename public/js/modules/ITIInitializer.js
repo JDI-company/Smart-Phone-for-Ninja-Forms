@@ -5,7 +5,7 @@
  * @since 1.2.0
  */
 
-import { codesISO2European } from '../utils.js'
+import { codesISO2European, nfspnRemoveValue } from '../utils.js'
 import $ from 'jquery'
 import intlTelInput from 'intl-tel-input'
 import intlTelInputUtils from 'intl-tel-input/build/js/utils.js'
@@ -111,10 +111,10 @@ class IntlTelInputInitializer {
     })
 
     if (onlyCountries.includes('all')) {
-      onlyCountries = onlyCountries.remove('all')
+      onlyCountries = nfspnRemoveValue(onlyCountries, 'all')
       onlyCountries = onlyCountries.concat(codesISO2)
     } else if (onlyCountries.includes('european')) {
-      onlyCountries = onlyCountries.remove('european')
+      onlyCountries = nfspnRemoveValue(onlyCountries, 'european')
       onlyCountries = onlyCountries.concat(codesISO2European)
     }
     return {
@@ -183,10 +183,5 @@ class IntlTelInputInitializer {
  * @param {*} value value to remove from array
  * @returns {Array} New Array without given value
  */
-
-/* eslint no-extend-native: ["error", { "exceptions": ["Array"] }] */
-Array.prototype.remove = function (value) {
-  return this.filter(function (element) { return element !== value })
-}
 
 export { IntlTelInputInitializer }
