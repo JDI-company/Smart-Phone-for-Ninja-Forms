@@ -3,9 +3,14 @@
  * included in this file.
  */
 
-$flagsImagePath: '../../assets/images/intltelinput/';
+@import "intl-tel-input/build/css/intlTelInput.min";
 
-@import "intl-tel-input/src/css/intlTelInput.scss";
+:root {
+  --iti-path-flags-1x: url("../../../assets/images/intltelinput/flags.png?1");
+  --iti-path-flags-2x: url("../../assets/images/intltelinput/flags@2x.png?1");
+  --iti-path-globe-1x: url("../../assets/images/intltelinput/globe.png");
+  --iti-path-globe-2x: url("../../assets/images/intltelinput/globe@2x.png");
+}
 
 .nf-form-cont {
     .iti {

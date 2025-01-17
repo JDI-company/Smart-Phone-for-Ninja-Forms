@@ -20,22 +20,22 @@ Wordpress plugin for entering and validating international telephone numbers bas
 <img width="600" alt="IP Lookup" src="https://user-images.githubusercontent.com/46939084/204006934-5ac1d6df-848f-436d-82ac-dd0e62f67b03.png">
 
 Change default country depends on user IP
-* **Show Selected Dial Code**
+* **Separate Dial Code**
 
-<img alt="Show Selected Dial Code" width="257" height="46" src="https://camo.githubusercontent.com/0d223e231ced86183d286196d3cab6e411f677f6695efa625dabdd44d0b4f65e/68747470733a2f2f7261772e6769746875622e636f6d2f6a61636b6f636e722f696e746c2d74656c2d696e7075742f6d61737465722f73637265656e73686f74732f73657061726174654469616c436f64652e706e67">
+<img alt="Separate Dial Code" width="257" height="46" src="TODO">
 
-Display the country dial code next to the selected flag. Play with this option on [Storybook](https://intl-tel-input.com/storybook/?path=/docs/intltelinput--showselecteddialcode) (using the React component).
+Display the country dial code next to the selected flag. Play with this option on [Storybook](https://intl-tel-input.com/storybook/?path=/docs/intltelinput--separateDialCode) (using the React component).
 
 * **Default Country**
 
 <img width="600" alt="Default Country" src="https://user-images.githubusercontent.com/46939084/204008019-65500e12-06ae-4503-b0a5-a42a0fbc78ed.png">
 
 Country in the input by default
-* **Preferred Countries**
+* **Country Order**
 
-<img width="600" alt="Preferred Countries" src="https://user-images.githubusercontent.com/46939084/204008199-69d512ee-2652-4375-8302-6ca3c4940a2d.png">
+<img width="600" alt="Country Order" src="TODO">
 
-Specify the countries to appear at the top of the list.
+Specify the ordering for the country list with an array of iso2 country codes. Any ommitted countries will appear after those specified
 * **Only Countries**
 
 <img width="600" alt="Only Countries" src="https://user-images.githubusercontent.com/46939084/204008692-8ee05c63-5743-4386-8027-4dd4460f22ea.png">
