@@ -5,7 +5,7 @@
 
 $flagsImagePath: '../../assets/images/intltelinput/';
 
-@import "intl-tel-input/src/css/intlTelInput.scss";
+@use "intl-tel-input/src/css/intlTelInput.scss";
 
 .nf-form-cont {
     .iti {
