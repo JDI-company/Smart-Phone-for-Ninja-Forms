@@ -33,7 +33,6 @@ class ITICountryCode {
     // Check if the model type is 'spn' and the value is not empty and a valid number
     if (model.get('type') === 'spn' && model.get('value') !== '' && !isNaN(Number(model.get('value')))) {
       const modelID = model.get('id')
-      console.log(modelID)
 
       // Get the phone input element and the wrapper element
       const $phone = jQuery('#nf-field-' + modelID)
@@ -48,7 +47,11 @@ class ITICountryCode {
         countryCode = $wrapper.find('.iti__selected-flag').text().match(/[+\d]+/g)?.join('')
       }
 
-      this.$phoneHidden.val(countryCode + $phone.val())
+      const exclude = $wrapper.find('input[type="tel"]').data('excludeCountrycodeFromSubmission');
+
+      if(exclude !== "1"){
+        this.$phoneHidden.val(countryCode + $phone.val())
+      }
     }
   }
 
@@ -65,12 +68,6 @@ class ITICountryCode {
       model.set('value', this.$phoneHidden.val())
     }
 
-    // Check if the 'Exclude country code from submission' option is checked and exclude the country code if it is
-    const exclude = $wrapper.find('input[type="tel"]').data('excludeCountrycodeFromSubmission');
-    if(exclude && this.$phoneHidden){
-      this.$phoneHidden.val().replace(countryCode, '');
-      model.set('value', this.$phoneHidden.val());
-    }
   }
 
   /**
