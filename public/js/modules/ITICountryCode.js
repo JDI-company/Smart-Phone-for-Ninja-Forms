@@ -47,7 +47,7 @@ class ITICountryCode {
         countryCode = $wrapper.find('.iti__selected-flag').text().match(/[+\d]+/g)?.join('')
       }
 
-      const exclude = $wrapper.find('input[type="tel"]').data('excludeCountrycodeFromSubmission');
+      const exclude = $wrapper.find('input[type="tel"]#nf-field-' + modelID).data('excludeCountryCodeFromSubmission');
 
       if(exclude !== "1"){
         this.$phoneHidden.val(countryCode + $phone.val())
