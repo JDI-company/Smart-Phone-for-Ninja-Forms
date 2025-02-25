@@ -279,8 +279,8 @@ class SPN_Field extends NF_Fields_Phone {
 		 *
 		 * @since    1.3.1
 		 */
-		$this->_settings['exclude_countrycode_from_submission'] = array(
-			'name'    => 'exclude_countrycode_from_submission',
+		$this->_settings['exclude_country_code_from_submission'] = array(
+			'name'    => 'exclude_country_code_from_submission',
 			'type'    => 'toggle',
 			'label'   => esc_html__( 'Exclude country code from the submission', 'ninja-forms-spn-addon' ),
 			'width'   => 'full',
