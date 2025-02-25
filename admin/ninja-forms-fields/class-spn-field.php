@@ -273,5 +273,20 @@ class SPN_Field extends NF_Fields_Phone {
 			'options' => $validation_options,
 			'help'    => wp_kses_post( $validation_help ),
 		);
+
+				/**
+		 * Add Exclude country code from the submission 
+		 *
+		 * @since    1.3.1
+		 */
+		$this->_settings['exclude_countrycode_from_submission'] = array(
+			'name'    => 'exclude_countrycode_from_submission',
+			'type'    => 'toggle',
+			'label'   => esc_html__( 'Exclude country code from the submission', 'ninja-forms-spn-addon' ),
+			'width'   => 'full',
+			'group'   => 'advanced',
+			'help'    => esc_html__( 'Enable if you want the country code to be removed from the submission', 'ninja-forms-spn-addon' ),
+			'value'   => false,
+		);
 	}
 }
