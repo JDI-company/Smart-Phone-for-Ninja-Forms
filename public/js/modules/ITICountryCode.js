@@ -49,7 +49,7 @@ class ITICountryCode {
 
       const exclude = $wrapper.find('input[type="tel"]#nf-field-' + modelID).data('exclude-country-code-from-submission');
 
-      this.$phoneHidden.val(countryCode + $phone.val())
+      this.$phoneHidden.val(exclude + countryCode + $phone.val());
 
       if(exclude == "1"){
         this.$phoneHidden.val().replace(countryCode, '')
