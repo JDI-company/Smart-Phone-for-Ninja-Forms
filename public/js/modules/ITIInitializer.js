@@ -59,6 +59,7 @@ class IntlTelInputInitializer {
     const autoHideDialCode = Boolean($input.data('auto-hide-dial-code'))
     const showSelectedDialCode = Boolean($input.data('show-selected-dial-code'))
     const formatOnDisplay = Boolean($input.data('format-on-display'))
+    const excludeCountryCodeFromSubmission = Boolean($input.data('exclude-country-code-from-submission'))
 
     return {
       onlyCountries: onlyCountries.onlyCountries,
@@ -70,7 +71,8 @@ class IntlTelInputInitializer {
       excludeCountries,
       allowIpLookUp,
       showSelectedDialCode,
-      formatOnDisplay
+      formatOnDisplay,
+      excludeCountryCodeFromSubmission
     }
   }
 
