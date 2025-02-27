@@ -3,11 +3,7 @@
  * included in this file.
  */
 
-
-
-@use "../../node_modules/intl-tel-input/src/css/intlTelInput.scss" with ($flagsImagePath: "/assets/images/intltelinput/");
-
-
+@use "../../node_modules/intl-tel-input/src/css/intlTelInput.scss" with ($flagsImagePath: "../../assets/images/intltelinput/");
 
 .nf-form-cont {
     .iti {
