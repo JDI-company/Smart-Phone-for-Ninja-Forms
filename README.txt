@@ -3,7 +3,7 @@ Contributors: yaroslavborodii, max10110
 Donate link: https://jdi.company
 Tags: Smart Phone Addon, Ninja Forms, SPN, intlTelInput, International Telephone Input
 Requires at least: 6.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Stable tag: 1.3.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
