@@ -3,9 +3,9 @@
  * included in this file.
  */
 
-$flagsImagePath: '../../assets/images/intltelinput/';
 
-@use "intl-tel-input/src/css/intlTelInput.scss";
+
+@use "../../node_modules/intl-tel-input/src/css/intlTelInput.scss" with ($flagsImagePath: "../../assets/images/intltelinput/");
 
 .nf-form-cont {
     .iti {
