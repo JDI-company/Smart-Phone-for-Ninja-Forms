@@ -9,7 +9,7 @@
     "babel-loader": "^10.0.0",
     "gulp": "^5.0.0",
     "standard": "^17.1.0",
-    "webpack": "^5.97.1",
+    "webpack": "^5.98.0",
     "webpack-stream": "^7.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-concat": "^2.6.1",
