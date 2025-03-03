@@ -21,7 +21,7 @@
     "@types/intl-tel-input": "^18.1.1",
     "intl-tel-input": "^19.5.6",
     "jquery": "^3.7.0",
-    "sass": "^1.85.0"
+    "sass": "^1.85.1"
   },
   "engines": {
     "node": ">=18"
