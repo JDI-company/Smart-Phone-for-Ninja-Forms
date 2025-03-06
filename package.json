@@ -6,10 +6,10 @@
   "devDependencies": {
     "@babel/core": "^7.26.9",
     "@babel/preset-env": "^7.26.9",
-    "babel-loader": "^9.2.1",
+    "babel-loader": "^10.0.0",
     "gulp": "^5.0.0",
     "standard": "^17.1.0",
-    "webpack": "^5.97.1",
+    "webpack": "^5.98.0",
     "webpack-stream": "^7.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-concat": "^2.6.1",
@@ -21,7 +21,7 @@
     "@types/intl-tel-input": "^18.1.1",
     "intl-tel-input": "^19.5.6",
     "jquery": "^3.7.0",
-    "sass": "^1.85.0"
+    "sass": "^1.85.1"
   },
   "engines": {
     "node": ">=18"

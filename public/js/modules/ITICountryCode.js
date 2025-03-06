@@ -47,7 +47,14 @@ class ITICountryCode {
         countryCode = $wrapper.find('.iti__selected-flag').text().match(/[+\d]+/g)?.join('')
       }
 
-      this.$phoneHidden.val(countryCode + $phone.val())
+      // Extract the "Exclude Country Code..." option
+      const exclude = $wrapper.find('input[type="tel"]#nf-field-' + modelID).data('exclude-country-code-from-submission');
+
+      this.$phoneHidden.val(countryCode + $phone.val());
+
+      if(exclude == "1"){
+        this.$phoneHidden.val($phone.val());
+      }
     }
   }
 
@@ -63,6 +70,7 @@ class ITICountryCode {
     if (model.get('type') === 'spn' && this.$phoneHidden) {
       model.set('value', this.$phoneHidden.val())
     }
+
   }
 
   /**
