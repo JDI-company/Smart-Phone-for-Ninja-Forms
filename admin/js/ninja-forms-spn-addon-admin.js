@@ -6,11 +6,6 @@
 
 import { SyncCountriesChoice } from './modules/SyncCountriesChoice.js'
 
-/* eslint no-extend-native: ["error", { "exceptions": ["Array"] }] */
-Array.prototype.remove = function (value) {
-  return this.filter(function (element) { return element !== value })
-};
-
 /**
  * SyncCountriesChoice
  */

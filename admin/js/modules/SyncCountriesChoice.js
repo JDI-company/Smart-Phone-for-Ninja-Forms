@@ -7,7 +7,7 @@
 import { FieldOnlyCountries } from './Fields/FieldOnlyCountries.js'
 import { FieldPrefferedCountries } from './Fields/FieldPrefferedCountries.js'
 import { FieldExcludeCountries } from './Fields/FieldExcludeCountries.js'
-import { codesISO2European, codesISO2 } from '../utils.js'
+import { codesISO2European, codesISO2, nfspnRemoveValue } from '../utils.js'
 
 const $ = jQuery
 
@@ -77,7 +77,7 @@ export class SyncCountriesChoice {
           FieldOnly.setFieldValue('all', true)
         } else if (currentValue.includes('european')) {
           let onlyCountries = [...codesISO2European]
-          onlyCountries = onlyCountries.concat(FieldOnly.getOptions('selected', 'value').remove('european'))
+          onlyCountries = onlyCountries.concat(nfspnRemoveValue(FieldOnly.getOptions('selected', 'value'), 'european'))
 
           // Handle Field Only
           FieldOnly.disableOptions(codesISO2European, true)

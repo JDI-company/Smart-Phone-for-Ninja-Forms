@@ -50,4 +50,8 @@ function propSelected ($selector, value) {
   }
 }
 
-export { propDisabled, propSelected, codesISO2, codesISO2European }
+function nfspnRemoveValue (obj, value) {
+  return obj.filter(function (element) { return element !== value })
+}
+
+export { propDisabled, propSelected, nfspnRemoveValue, codesISO2, codesISO2European }
