@@ -42,9 +42,9 @@ class ITICountryCode {
       this.$phoneHidden = $wrapper.find('#nf-field-' + modelID + '-hidden')
 
       // Extract the country code from the selected flag and update the hidden input value
-      let countryCode = $wrapper.find('.iti__selected-flag').attr('title').match(/[+\d]+/g)?.join('')
+      let countryCode = $wrapper.find('.iti__selected-country').attr('title').match(/[+\d]+/g)?.join('')
       if (!countryCode) {
-        countryCode = $wrapper.find('.iti__selected-flag').text().match(/[+\d]+/g)?.join('')
+        countryCode = $wrapper.find('.iti__selected-country').text().match(/[+\d]+/g)?.join('')
       }
 
       // Extract the "Exclude Country Code..." option
