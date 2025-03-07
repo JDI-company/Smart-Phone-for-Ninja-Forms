@@ -4,6 +4,7 @@
  * @since 1.3.0
  */
 
+import intlTelInput from 'intl-tel-input'
 import $ from 'jquery'
 
 class SPNValidation {
@@ -68,7 +69,7 @@ class SPNValidation {
 
     if (isError) {
       // Add Error to Model
-      const errorCode = ITI.getValidationError()
+      const errorCode = intlTelInput.utils.getValidationError()
       const errorText = errorMap[errorCode]
 
       Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'spn-field-error', errorText)
