@@ -48,7 +48,7 @@ class SPNValidation {
 
     // Find the input field within the parent element
     const $input = $parentElement.find('.spn-container input[type="tel"]')
-    const ITI = window.intlTelInputGlobals.getInstance($input[0])
+    const ITI = intlTelInput.getInstance($input[0])
 
     // Define an error map for different validation errors ['Invalid number', 'Invalid country code', 'Too short', 'Too long', 'Invalid number']
     // TODO: Move error map to Ninja Forms UI Editor
