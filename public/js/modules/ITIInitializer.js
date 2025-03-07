@@ -82,7 +82,7 @@ class IntlTelInputInitializer {
    * @param {Object} dataAttributes - Extracted data attributes.
    */
   initializeIntlTelInput ($input, dataAttributes) {
-    intlTelInput($input[0], {
+    intlTelInputWithUtils($input[0], {
       initialCountry: dataAttributes.defaultCountry,
       countryOrder: dataAttributes.countryOrder,
       onlyCountries: dataAttributes.onlyCountries,
