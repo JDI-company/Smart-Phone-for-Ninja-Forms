@@ -62,7 +62,7 @@ class SPNInput {
 
     data(function (country) {
       const inputElement = document.querySelector('.iti__tel-input')
-      const itiInstance = window.intlTelInputGlobals.getInstance(inputElement)
+      const itiInstance = window.getInstance(inputElement)
       itiInstance.setCountry(country)
     }, function () {
       console.error('Failed to retrieve country information')
