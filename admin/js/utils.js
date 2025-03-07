@@ -4,12 +4,12 @@
  * @since 1.0.0
  */
 
-import intlTelInput from 'intl-tel-input'
+import intlTelInputWithUtils from 'intl-tel-input/build/js/intlTelInputWithUtils.js'
 
 const $ = jQuery
 
 // Get All Countries Codes from intTelInput
-const allCountries = [...window.intlTelInputGlobals.getCountryData()]
+const allCountries = [intlTelInputWithUtils.getCountryData()]
 
 // Set All ISO2 codes
 const codesISO2 = allCountries.map((country) => {

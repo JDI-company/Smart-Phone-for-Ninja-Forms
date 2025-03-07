@@ -24,7 +24,7 @@ Change default country depends on user IP
 
 <img alt="Show Selected Dial Code" width="257" height="46" src="https://camo.githubusercontent.com/0d223e231ced86183d286196d3cab6e411f677f6695efa625dabdd44d0b4f65e/68747470733a2f2f7261772e6769746875622e636f6d2f6a61636b6f636e722f696e746c2d74656c2d696e7075742f6d61737465722f73637265656e73686f74732f73657061726174654469616c436f64652e706e67">
 
-Display the country dial code next to the selected flag. Play with this option on [Storybook](https://intl-tel-input.com/storybook/?path=/docs/intltelinput--showselecteddialcode) (using the React component).
+Display the country dial code next to the selected flag. Play with this option on [Storybook](https://intl-tel-input.com/storybook/?path=/docs/intltelinput--separateDialCode) (using the React component).
 
 * **Default Country**
 
