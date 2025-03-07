@@ -7,7 +7,7 @@
 
 import { codesISO2European, nfspnRemoveValue } from '../utils.js'
 import $ from 'jquery'
-import intlTelInput from 'intl-tel-input'
+import intlTelInputWithUtils from 'intl-tel-input'
 import intlTelInputUtils from 'intl-tel-input/build/js/utils.js'
 
 /**
@@ -105,7 +105,7 @@ class IntlTelInputInitializer {
   getOnlyCountries ($input) {
     let onlyCountries = $input.data('only-countries').split(',')
     const defaultCountry = $input.data('default-country')
-    const allCountries = [intlTelInput.getCountryData()]
+    const allCountries = [intlTelInputWithUtils.getCountryData()]
     const codesISO2 = allCountries.map((country) => {
       return country.iso2
     })

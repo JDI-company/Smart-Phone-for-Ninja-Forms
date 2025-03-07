@@ -4,7 +4,7 @@
  * @since 1.3.0
  */
 
-import intlTelInput from 'intl-tel-input'
+import intlTelInputWithUtils from 'intl-tel-input'
 import $ from 'jquery'
 
 class SPNValidation {
@@ -48,7 +48,7 @@ class SPNValidation {
 
     // Find the input field within the parent element
     const $input = $parentElement.find('.spn-container input[type="tel"]')
-    const ITI = intlTelInput.getInstance($input[0])
+    const ITI = intlTelInputWithUtils.getInstance($input[0])
 
     // Define an error map for different validation errors ['Invalid number', 'Invalid country code', 'Too short', 'Too long', 'Invalid number']
     // TODO: Move error map to Ninja Forms UI Editor
@@ -69,7 +69,7 @@ class SPNValidation {
 
     if (isError) {
       // Add Error to Model
-      const errorCode = intlTelInput.utils.getValidationError()
+      const errorCode = intlTelInputWithUtils.getValidationError()
       const errorText = errorMap[errorCode]
 
       Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'spn-field-error', errorText)
