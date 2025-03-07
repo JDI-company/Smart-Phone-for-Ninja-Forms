@@ -7,7 +7,7 @@
 
 import { codesISO2European, nfspnRemoveValue } from '../utils.js'
 import $ from 'jquery'
-import intlTelInputWithUtils from 'intl-tel-input'
+import intlTelInputWithUtils from 'intl-tel-input/build/js/intlTelInputWithUtils.js'
 import intlTelInputUtils from 'intl-tel-input/build/js/utils.js'
 
 /**

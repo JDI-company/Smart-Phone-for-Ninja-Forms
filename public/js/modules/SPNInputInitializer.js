@@ -4,7 +4,7 @@
  * @since 1.2.0
  */
 
-import intlTelInputWithUtils from 'intl-tel-input'
+import intlTelInputWithUtils from 'intl-tel-input/build/js/intlTelInputWithUtils.js'
 import { IntlTelInputInitializer } from './ITIInitializer.js'
 import { SPNValidation } from './SPNValidation.js'
 import $ from 'jquery'

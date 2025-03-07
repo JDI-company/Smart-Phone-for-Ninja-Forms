@@ -4,7 +4,7 @@
  * @since 1.3.0
  */
 
-import intlTelInputWithUtils from 'intl-tel-input'
+import intlTelInputWithUtils from 'intl-tel-input/build/js/intlTelInputWithUtils.js'
 import $ from 'jquery'
 
 class SPNValidation {
