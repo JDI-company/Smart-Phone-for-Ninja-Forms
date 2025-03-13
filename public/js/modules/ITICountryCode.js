@@ -50,10 +50,13 @@ class ITICountryCode {
       // Extract the "Exclude Country Code..." option
       const exclude = $wrapper.find('input[type="tel"]#nf-field-' + modelID).data('exclude-country-code-from-submission');
 
-      this.$phoneHidden.val(countryCode + $phone.val());
+      
 
       if(exclude == "1"){
         this.$phoneHidden.val($phone.val());
+      }
+      else{
+        this.$phoneHidden.val(countryCode + $phone.val());
       }
     }
   }
