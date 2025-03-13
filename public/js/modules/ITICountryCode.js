@@ -56,7 +56,7 @@ class ITICountryCode {
         this.$phoneHidden.val($phone.val());
       }
       else{
-        this.$phoneHidden.val(countryCode + $phone.val());
+        // this.$phoneHidden.val(countryCode + $phone.val());
       }
     }
   }
