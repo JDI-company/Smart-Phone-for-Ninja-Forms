@@ -99,7 +99,7 @@ class SPN_Field extends NF_Fields_Phone {
 			'label' => esc_html__( 'Show Selected Dial Code', 'ninja-forms-spn-addon' ),
 			'width' => 'full',
 			'group' => 'restrictions',
-			'help'  => wp_kses_post( __( 'Display the country dial code next to the selected flag. Play with this option on <a href="https://intl-tel-input.com/storybook/?path=/docs/intltelinput--showselecteddialcode" target="_blank" rel="noopener">Storybook</a> (using the React component).', 'ninja-forms-spn-addon' ) ),
+			'help'  => wp_kses_post( __( 'Display the country dial code next to the selected flag. Play with this option on <a href="https://intl-tel-input.com/storybook/?path=/docs/intltelinput--separateDialCode" target="_blank" rel="noopener">Storybook</a> (using the React component).', 'ninja-forms-spn-addon' ) ),
 			'value' => false,
 		);
 
