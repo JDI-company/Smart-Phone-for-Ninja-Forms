@@ -57,16 +57,16 @@ class SPNValidation {
     let isError
 
     //let the number be empty if the field is not required
-    if ($input.val() === '') {
+    if ($input.val() === '' || !$input) {
       isError = false
     } 
     else {
       // Perform validation based on the type of validation
       if (validationType === 'precise') {
-        isError = !ITI.isValidNumberPrecise()
+        isError = !ITI.utils.isValidNumberPrecise()
       } 
       else {
-        isError = !ITI.isValidNumber()
+        isError = !ITI.utils.isValidNumber()
       }
     }
 
@@ -76,7 +76,7 @@ class SPNValidation {
 
     if (isError) {
       // Add Error to Model
-      const errorCode = ITI.getValidationError()
+      const errorCode = ITI.utils.getValidationError()
       const errorText = errorMap[errorCode]
 
       Backbone.Radio.channel('fields').request('add:error', model.get('id'), 'spn-field-error', errorText)
