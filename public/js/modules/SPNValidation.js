@@ -56,11 +56,18 @@ class SPNValidation {
     const validationType = $input.attr('data-validation-type')
     let isError
 
-    // Perform validation based on the type of validation
-    if (validationType === 'precise') {
-      isError = !ITI.isValidNumberPrecise()
-    } else {
-      isError = !ITI.isValidNumber()
+    //let the number be empty if the field is not required
+    if ($input.val() === '') {
+      isError = false
+    } 
+    else {
+      // Perform validation based on the type of validation
+      if (validationType === 'precise') {
+        isError = !ITI.isValidNumberPrecise()
+      } 
+      else {
+        isError = !ITI.isValidNumber()
+      }
     }
 
     function removeError () {
